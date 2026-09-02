@@ -9,9 +9,16 @@ import ThemeToggle from "./ThemeToggle";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [solid, setSolid] = useState(false);
   const [active, setActive] = useState<string>("");
 
-  // Close the mobile menu whenever the viewport grows back to desktop width.
+  useEffect(() => {
+    const onScroll = () => setSolid(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 921px)");
     const onChange = () => setOpen(false);
@@ -19,14 +26,10 @@ export default function Header() {
     return () => mq.removeEventListener("change", onChange);
   }, []);
 
-  // Lightweight scroll-spy: highlight whichever section heading is nearest the top.
   useEffect(() => {
     const ids = nav.map((n) => n.href.replace("#", ""));
-    const sections = ids
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => !!el);
+    const sections = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el);
     if (!sections.length) return;
-
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -40,10 +43,8 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="hdr" id="top">
-      <a href="#main" className="skip">
-        Skip to content
-      </a>
+    <header className={solid ? "hdr is-solid" : "hdr"} id="top">
+      <a href="#main" className="skip">Skip to content</a>
       <div className="hdr__in" style={{ position: "relative" }}>
         <Link href="#top" className="logo">
           <span className="logo__mark">RV</span>
@@ -59,13 +60,8 @@ export default function Header() {
               {item.label}
             </a>
           ))}
-          <a className="hdr__tel" href={site.phoneHref}>
-            {site.phoneDisplay}
-          </a>
           <ThemeToggle />
-          <a href="#quote" className="btn btn--primary">
-            Get a fixed quote
-          </a>
+          <a href="#quote" className="btn btn--copper">Get a quote</a>
         </nav>
 
         <button
@@ -96,16 +92,9 @@ export default function Header() {
               }}
             >
               {nav.map((item) => (
-                <a key={item.href} href={item.href}>
-                  {item.label}
-                </a>
+                <a key={item.href} href={item.href}>{item.label}</a>
               ))}
-              <a className="hdr__tel" href={site.phoneHref} style={{ paddingTop: ".85rem" }}>
-                {site.phoneDisplay}
-              </a>
-              <a href="#quote" className="btn btn--primary">
-                Get a fixed quote
-              </a>
+              <a href="#quote" className="btn btn--copper">Get a quote</a>
             </motion.nav>
           )}
         </AnimatePresence>

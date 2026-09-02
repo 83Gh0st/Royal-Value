@@ -1,66 +1,29 @@
 import { clients, projectRecord } from "@/lib/content";
-import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 const recordGroups = [projectRecord.villas, projectRecord.industrial, projectRecord.landmark];
 
 export default function Clients() {
   return (
-    <section className="sec sec--sheet" id="clients">
+    <section className="sec sec--paper" id="projects">
       <div className="wrap">
         <div className="sec__head">
-          <Reveal>
-            <div>
-              <p className="tag">Who we&rsquo;ve worked for</p>
-              <h2 className="t-h2">The names on our invoices.</h2>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="lede">
-              Ninety-five projects between 2008 and 2025. These are the organisations that
-              signed them off — the ordinary reason to trust a contractor you haven&rsquo;t
-              met.
-            </p>
-          </Reveal>
+          <h2 className="t-h2">The names on our invoices.</h2>
+          <p className="lede">
+            Ninety-five projects between 2008 and 2025. These are the
+            organisations that signed them off.
+          </p>
         </div>
-      </div>
 
-      <Reveal delay={0.05}>
-        <div className="marquee" style={{ marginBottom: "1.75rem" }}>
-          <div className="marquee__track">
-            {[...clients, ...clients].map((c, i) => (
-              <span
-                key={`${c}-${i}`}
-                style={{
-                  fontFamily: "var(--f-mono)",
-                  fontSize: ".72rem",
-                  letterSpacing: ".08em",
-                  textTransform: "uppercase",
-                  color: "var(--muted)",
-                  padding: "0 1.6rem",
-                  borderRight: "1px solid var(--rule)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {c}
-              </span>
-            ))}
-          </div>
-        </div>
-      </Reveal>
-
-      <div className="wrap">
-        <RevealGroup className="clients" as="ul" stagger={0.02}>
+        <div className="clients-wall" style={{ marginBottom: "4rem" }}>
           {clients.map((c) => (
-            <RevealItem key={c} as="li">
-              {c}
-            </RevealItem>
+            <span key={c}>{c}</span>
           ))}
-        </RevealGroup>
+        </div>
 
-        <RevealGroup className="rec">
+        <div className="rec">
           {recordGroups.map((group) => (
-            <RevealItem key={group.title} className="rec__col">
-              <h3 className="t-h3">{group.title}</h3>
+            <div className="rec__col" key={group.title}>
+              <h3>{group.title}</h3>
               <ul className="rec__list">
                 {group.items.map((item) => (
                   <li key={item.name}>
@@ -69,9 +32,9 @@ export default function Clients() {
                   </li>
                 ))}
               </ul>
-            </RevealItem>
+            </div>
           ))}
-        </RevealGroup>
+        </div>
       </div>
     </section>
   );

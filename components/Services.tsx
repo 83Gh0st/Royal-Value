@@ -1,51 +1,93 @@
+"use client";
+
 import Image from "next/image";
-import { services } from "@/lib/content";
-import Reveal, { RevealGroup, RevealItem } from "./Reveal";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
+import { serviceGroups } from "@/lib/content";
 
 export default function Services() {
+  const [openId, setOpenId] = useState<string | null>(serviceGroups[0]?.id ?? null);
+
   return (
-    <section className="sec sec--sheet" id="build">
+    <section className="sec sec--steel" id="services">
       <div className="wrap">
-        <div className="sec__head">
-          <Reveal>
-            <div>
-              <p className="tag">What we build</p>
-              <h2 className="t-h2">Three things, done properly.</h2>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="lede">
-              We deliberately don&rsquo;t chase towers or infrastructure. Depth in a narrow
-              range is what keeps our rates predictable.
-            </p>
-          </Reveal>
+        <div className="sec__head sec__head--wide">
+          <h2 className="t-h2">Three disciplines. One contract.</h2>
+          <p className="lede">
+            Civil, MEP and HVAC each run as their own trade internally, but
+            they sit under a single Dubai licence — which is what lets us
+            coordinate them without a second contractor&rsquo;s margin in
+            between.
+          </p>
         </div>
 
-        <RevealGroup className="svc">
-          {services.map((s, i) => (
-            <RevealItem key={s.title} className="svc__item">
-              <div className="svc__img" data-slot={s.slot}>
-                <Image
-                  src={s.image.src}
-                  alt={s.image.alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 33vw"
-                  style={{ objectFit: "cover" }}
-                  priority={i === 0}
-                />
+        <div className="svc-list">
+          {serviceGroups.map((g) => {
+            const open = openId === g.id;
+            return (
+              <div className={open ? "svc-row is-open" : "svc-row"} key={g.id}>
+                <button
+                  type="button"
+                  className="svc-row__head"
+                  aria-expanded={open}
+                  aria-controls={`svc-panel-${g.id}`}
+                  onClick={() => setOpenId(open ? null : g.id)}
+                >
+                  <span className="svc-row__title">
+                    <h3>{g.title}</h3>
+                    <p>{g.blurb}</p>
+                  </span>
+                  <span className="svc-row__plus" aria-hidden="true">+</span>
+                </button>
+
+                <AnimatePresence initial={false}>
+                  {open && (
+                    <motion.div
+                      id={`svc-panel-${g.id}`}
+                      className="svc-row__panel"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                    >
+                      <div className="svc-row__panel-in">
+                        {g.subgroups ? (
+                          <div className="svc-row__cols">
+                            {g.subgroups.map((sub) => (
+                              <div key={sub.label}>
+                                <h4>{sub.label}</h4>
+                                <ul>
+                                  {sub.items.map((it) => (
+                                    <li key={it}>{it}</li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <ul className="svc-plain">
+                            {g.items.map((it) => (
+                              <li key={it}>{it}</li>
+                            ))}
+                          </ul>
+                        )}
+                        <div className="svc-row__img">
+                          <Image
+                            src={g.image.src}
+                            alt={g.image.alt}
+                            fill
+                            sizes="(max-width: 860px) 100vw, 20rem"
+                            style={{ objectFit: "cover" }}
+                          />
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
-              <div className="svc__body">
-                <h3 className="t-h3">{s.title}</h3>
-                <p>{s.body}</p>
-                <ul className="svc__list">
-                  {s.list.map((li) => (
-                    <li key={li}>{li}</li>
-                  ))}
-                </ul>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

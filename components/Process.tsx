@@ -1,35 +1,29 @@
-import { processSteps } from "@/lib/content";
-import Reveal, { RevealGroup, RevealItem } from "./Reveal";
+import { projectExecution } from "@/lib/content";
 
 export default function Process() {
   return (
-    <section className="sec sec--sheet" id="process">
+    <section className="sec sec--gun" id="process">
       <div className="wrap">
         <div className="sec__head">
-          <Reveal>
-            <div>
-              <p className="tag">How it runs</p>
-              <h2 className="t-h2">Five stages. Each with a date attached.</h2>
-            </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="lede">
-              The sequence below is what goes into your contract programme, with liquidated
-              damages against the handover date.
-            </p>
-          </Reveal>
+          <h2 className="t-h2">Planning through to handover.</h2>
+          <p className="lede">
+            Civil, MEP and HVAC are coordinated through the same seven
+            stages on every project, whether we&rsquo;re the main contractor
+            or delivering one trade to somebody else&rsquo;s programme.
+          </p>
         </div>
 
-        <RevealGroup className="steps">
-          {processSteps.map((step) => (
-            <RevealItem key={step.no} className="step">
-              <span className="step__no">{step.no}</span>
-              <h3>{step.title}</h3>
-              <p>{step.body}</p>
-              <time>{step.time}</time>
-            </RevealItem>
+        <div className="process">
+          {projectExecution.map((step, i) => (
+            <div className="proc-row" key={step.title}>
+              <span className="proc-row__no num">{String(i + 1).padStart(2, "0")}</span>
+              <div className="proc-row__body">
+                <h3>{step.title}</h3>
+                <p>{step.body}</p>
+              </div>
+            </div>
           ))}
-        </RevealGroup>
+        </div>
       </div>
     </section>
   );

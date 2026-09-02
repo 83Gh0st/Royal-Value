@@ -1,33 +1,34 @@
 # RV Group Contracting — Next.js site
 
-A full Next.js (App Router) rebuild of the RV Group Contracting one-page site —
-same content and drawing-sheet design language as the original static HTML,
-rebuilt as a proper component-driven, animated, SEO-ready web app.
+A Next.js (App Router) build of the RV Group Contracting site, written from
+the company's actual 2025 profile, UAE trade licences and VAT certificates
+— not a generic template. Design is grounded in the real trade (civil,
+MEP, HVAC) rather than a decorative "blueprint" theme.
 
 ## What's in here
 
 - **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4**
-- **Framer Motion** — scroll reveals, staggered grids, an animated mobile
-  menu, a spring-eased FAQ accordion, and count-up stats
-- **Real photography** (villas, warehouses, a job site, an interior, a
-  drafting table) via `next/image`, licensed for free commercial use on
-  Unsplash — see [Image credits](#image-credits)
-- **Working budget estimator** — the same rate logic as the original,
-  ported to React state (`components/Estimator.tsx`)
+- **Real content**: licence numbers, expiry dates, registered address,
+  client list, project history and the services taxonomy all come from
+  `RVEM-company_Profile_2025.pdf` and the attached trade licences — see
+  `lib/content.ts`, the single source of truth for every piece of text.
+- **A distinct design system**: gunmetal + cast-concrete + burnt-copper
+  palette, Big Shoulders Display (industrial condensed) paired with Inter,
+  full-bleed photography, an editorial expandable services list and a
+  genuine 7-stage numbered process — deliberately not a generic
+  card-grid-with-eyebrow-labels template.
+- **Framer Motion** used sparingly: one orchestrated hero entrance,
+  count-up stats, an animated mobile menu and two accordions (services,
+  FAQ) — not a fade-up animation on every section.
+- **Working budget estimator** (`components/Estimator.tsx`) — ports the
+  same villa/warehouse rate logic to React state.
 - **Working contact form** — posts to `app/api/contact/route.ts`, which
-  validates and logs the enquiry server-side (see
-  [Wiring the contact form to email](#wiring-the-contact-form-to-email))
-- **Dark / light mode toggle**, persisted to `localStorage`, with a
-  no-flash inline script and full `prefers-color-scheme` fallback
+  validates and logs the enquiry (see below for wiring it to email).
+- **Dark / light mode toggle**, persisted, no-flash on load.
 - **SEO**: metadata, `GeneralContractor` + `FAQPage` JSON-LD, an
-  auto-generated Open Graph image (`app/opengraph-image.tsx`),
-  `sitemap.ts` and `robots.ts`
+  auto-generated Open Graph image, `sitemap.ts` and `robots.ts`.
 - Accessible by default: skip link, focus-visible states, semantic
-  landmarks, `prefers-reduced-motion` respected throughout
-
-All copy, numbers, licence details and rates are ported verbatim from the
-original `index.html` — see `lib/content.ts`, which is the single source of
-truth for every piece of text on the page.
+  landmarks, `prefers-reduced-motion` respected throughout.
 
 ## Getting started
 
@@ -36,9 +37,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
-
-To build and run a production server:
+Open [http://localhost:3000](http://localhost:3000). For production:
 
 ```bash
 npm run build
@@ -51,72 +50,63 @@ npm start
 app/
   layout.tsx          Root layout: fonts, metadata, theme script, JSON-LD
   page.tsx             Assembles every section in order
-  globals.css          Design tokens + component styles (ported 1:1 from the original)
+  globals.css          Design tokens + component styles
   opengraph-image.tsx  Auto-generated 1200×630 social preview image
-  sitemap.ts, robots.ts
   api/contact/route.ts Contact form handler
-components/            One component per section (Hero, Services, Pricing, …)
-lib/content.ts          All copy, rates, coverage areas, FAQs, JSON-LD — edit here
+components/            One component per section
+lib/content.ts          All copy, rates, licences, clients, projects, FAQs — edit here
 ```
 
 ### Editing content
 
-Everything text-based — headlines, the rate card, coverage areas, the client
-list, FAQs, contact details — lives in `lib/content.ts`. Change it there and
+Everything text-based lives in `lib/content.ts`: the services taxonomy
+(Civil / MEP / HVAC, with the Mechanical/Electrical/Plumbing breakdown),
+the rate card, licence numbers and expiry dates, the client list, selected
+projects, technical staff, fleet, suppliers and FAQs. Change it there and
 every component that uses it updates automatically.
 
 ### Editing the look
 
-Colours, type scale, spacing and every component class (`.hero`, `.card`,
-`.est`, `.faq-item`, …) live in `app/globals.css` as CSS custom properties
-and plain CSS — the same token system as the original file (`--pine`,
-`--hivis`, `--ground`, etc.), just split so Tailwind's utility classes are
-still available if you want them.
+Colours, type scale and every component class live in `app/globals.css`
+as CSS custom properties and plain CSS (`--steel`, `--gun`, `--copper`,
+etc.), with Tailwind utilities available where convenient.
 
 ## Wiring the contact form to email
 
-Right now `app/api/contact/route.ts` validates each submission and
-`console.log`s it, so the form works end-to-end out of the box but nothing
-is emailed yet. Before going live, pick one:
-
-- **[Resend](https://resend.com)** — a few lines with their Node SDK
-- **[Web3Forms](https://web3forms.com)** — drop-in, no backend code needed
-- Your own SMTP relay via `nodemailer`
-
-Replace the `console.log(...)` call in that file with your provider of
-choice.
+`app/api/contact/route.ts` currently validates each submission and
+`console.log`s it — the form works end-to-end, but nothing is emailed yet.
+Before going live, wire the `console.log(...)` call to a real provider:
+[Resend](https://resend.com), [Web3Forms](https://web3forms.com), or your
+own SMTP relay via `nodemailer`.
 
 ## Before you deploy
 
-Search the project for `[EDIT]` — currently just the one spot in
-`app/api/contact/route.ts` — for anything that still needs a real
-integration. Everything else (phone numbers, licence numbers, addresses,
-rates) is already filled in from the source site.
+- Search the project for `[EDIT]` (currently just the contact route) for
+  anything that still needs a real integration.
+- Swap in real jobsite photography when you have it — see
+  [Image credits](#image-credits) below for what's there now.
+- Confirm the licence expiry dates in `lib/content.ts` are still current;
+  they were correct as of the January 2025 documents this was built from.
 
 ## Image credits
 
-Photography is served directly from Unsplash's CDN (`images.unsplash.com`)
-under the [Unsplash License](https://unsplash.com/license) (free for
-commercial use, no attribution required). If you'd rather self-host, replace
-the `image.src` values in `lib/content.ts` and `app/page.tsx` with your own
-project photography — the sooner you swap in real jobsite photos, the
-better this page will convert.
+Photography is served from Unsplash's CDN under the
+[Unsplash License](https://unsplash.com/license) (free for commercial use,
+no attribution required).
 
 | Section | Photographer |
 |---|---|
-| Villa exterior (Services, hero-adjacent) | John Fornander |
-| Warehouse exterior (Services) | Theo Marjoram |
-| Construction worker (Services) | Josh Olalde |
-| Construction site cranes (feature band) | Samuel Regan-Asante |
-| Living room interior (feature band) | Lotus Design N Print |
-| Architect's drafting table (feature band) | Daniel McCullough |
+| Hero, feature band (process) | Samuel Regan-Asante |
+| Services — MEP, feature band (own trade) | colsan ltda |
+| Services — Civil / HVAC | John Fornander, Theo Marjoram |
+| Feature band (engineering) | Daniel McCullough |
+| Services — Civil (worker) | Josh Olalde |
+| Interior reference | Lotus Design N Print |
 
 ## Tech notes
 
-- Tailwind CSS v4 is configured CSS-first (no `tailwind.config.ts`) — see
-  the `@theme inline` block at the top of `app/globals.css`.
-- Google Fonts (Archivo, IBM Plex Sans, IBM Plex Mono) are loaded via a
-  `<link>` tag in `app/layout.tsx` rather than `next/font`, matching the
-  original file exactly and avoiding a build-time dependency on Google's
-  font CDN.
-- `npm run lint` runs clean (0 errors, 0 warnings).
+- Tailwind CSS v4 is configured CSS-first (no `tailwind.config.ts`).
+- Google Fonts (Big Shoulders Display, Inter) load via a `<link>` tag in
+  `app/layout.tsx` rather than `next/font`, so there's no build-time
+  dependency on Google's font CDN.
+- `npm run build` and `npm run lint` both run clean.

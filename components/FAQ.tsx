@@ -3,29 +3,22 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { faqJsonLd, faqs } from "@/lib/content";
-import Reveal from "./Reveal";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="sec sec--sheet" id="faq">
+    <section className="sec sec--paper" id="faq">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="wrap">
         <div className="sec__head">
-          <Reveal>
-            <div>
-              <p className="tag">Straight answers</p>
-              <h2 className="t-h2">The questions you&rsquo;re actually asking.</h2>
-            </div>
-          </Reveal>
+          <h2 className="t-h2">The questions you&rsquo;re actually asking.</h2>
         </div>
 
-        <Reveal delay={0.05}>
-          <div className="faq">
+        <div className="faq">
             {faqs.map((item, i) => {
               const open = openIndex === i;
               return (
@@ -63,7 +56,6 @@ export default function FAQ() {
               );
             })}
           </div>
-        </Reveal>
       </div>
     </section>
   );

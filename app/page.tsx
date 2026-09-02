@@ -1,4 +1,5 @@
-import CredibilityBanner from "@/components/CredibilityBanner";
+import AdditionalServices from "@/components/AdditionalServices";
+import Capability from "@/components/Capability";
 import Clients from "@/components/Clients";
 import Contact from "@/components/Contact";
 import Coverage from "@/components/Coverage";
@@ -20,43 +21,34 @@ export default function Home() {
       <Header />
       <main id="main">
         <Hero />
-        <CredibilityBanner />
         <WhyCheaper />
+        <Services />
         <FeatureBand
-          eyebrow="One set of drawings"
+          eyebrow="Engineering, before site"
           heading="Value-engineered on paper, before it costs you on site."
-          body="Because design and build sit under one contract, a specification change is a five-minute conversation before drawings freeze — not a variation claim once the blockwork is up."
+          body="Civil, MEP and HVAC drawings are coordinated before anything mobilises — so a specification change is a conversation at the drafting table, not a variation claim once the blockwork is up."
           image={{
             src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
             alt: "Architect working on a technical drawing with a pencil and ruler",
           }}
         />
-        <Services />
+        <Process />
         <Pricing />
         <Estimator />
-        <Process />
         <FeatureBand
-          eyebrow="On site, every week"
-          heading="A dated photo report, without you asking for one."
-          body="Our own MEP crew works alongside the civil team from foundation to handover, so callbacks on air-conditioning and plumbing come back to the people who installed them."
+          eyebrow="Our own trade"
+          heading="MEP done by the people who commission it."
+          body="Callbacks on air-conditioning, power and plumbing come back to the same team that installed them — not a subcontractor we've lost touch with."
           image={{
-            src: "https://images.unsplash.com/photo-1599995903128-531fc7fb694b",
-            alt: "Construction cranes over a building site at low sun",
+            src: "https://images.unsplash.com/photo-1615774925655-a0e97fc85c14",
+            alt: "Electrician in a hard hat and face shield testing an electrical panel",
           }}
-          reverse
+          cta={{ label: "See our capability", href: "#capability" }}
         />
         <Coverage />
+        <Capability />
         <Clients />
-        <FeatureBand
-          eyebrow="Premium specification"
-          heading="Reads as luxury, priced at mid-market."
-          body="Large-format porcelain, solid-core doors, ducted HVAC and LED cove lighting — the Premium tier most clients choose, at AED 520–680 per sq ft build-only."
-          image={{
-            src: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
-            alt: "Living room interior with a marble fireplace and white sofas",
-          }}
-          cta={{ label: "See the full rate card", href: "#pricing" }}
-        />
+        <AdditionalServices />
         <FAQ />
         <Contact />
       </main>

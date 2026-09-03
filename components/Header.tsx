@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -47,7 +48,7 @@ export default function Header() {
       <a href="#main" className="skip">Skip to content</a>
       <div className="hdr__in" style={{ position: "relative" }}>
         <Link href="#top" className="logo">
-          <span className="logo__mark">RV</span>
+          <Image src="/logo-mark.svg" alt="" width={45} height={36} className="logo__mark" priority />
           <span className="logo__txt">
             <b>{site.name}</b>
             <span>{site.parent}</span>

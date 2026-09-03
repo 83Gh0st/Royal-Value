@@ -5,7 +5,7 @@ import { site, jsonLd } from "@/lib/content";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "RV Group Contracting — Villa & Warehouse Design-Build, Dubai · Sharjah · Ajman",
+    default: "RV Group Contracting — Civil Construction, MEP & HVAC, UAE",
     template: "%s — RV Group Contracting",
   },
   description: site.description,
@@ -13,19 +13,16 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     url: site.url,
-    title: "RV Group Contracting — Villa & Warehouse Design-Build",
+    title: "RV Group Contracting — Civil Construction, MEP & HVAC",
     description:
-      "Built to the drawing. Billed to the quote. Villas and warehouses across Dubai, Sharjah and Ajman.",
+      "Approved drawings, precisely executed. Civil, MEP and HVAC contracting across Dubai, Sharjah, Ajman and Abu Dhabi since 2007.",
     siteName: site.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "RV Group Contracting — Villa & Warehouse Design-Build",
+    title: "RV Group Contracting — Civil Construction, MEP & HVAC",
     description:
-      "Built to the drawing. Billed to the quote. Villas and warehouses across Dubai, Sharjah and Ajman.",
-  },
-  icons: {
-    icon: "/favicon.ico",
+      "Approved drawings, precisely executed. Civil, MEP and HVAC contracting across Dubai, Sharjah, Ajman and Abu Dhabi since 2007.",
   },
 };
 

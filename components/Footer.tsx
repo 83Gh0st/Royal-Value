@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { footerLinks, site } from "@/lib/content";
 
 export default function Footer() {
@@ -8,9 +9,7 @@ export default function Footer() {
         <div className="ftr__grid">
           <div>
             <a href="#top" className="logo" style={{ marginBottom: ".9rem", display: "inline-flex" }}>
-              <span className="logo__mark" style={{ background: "var(--on-gun)", color: "var(--gun)" }}>
-                RV
-              </span>
+              <Image src="/logo-mark.svg" alt="" width={45} height={36} className="logo__mark" />
               <span className="logo__txt">
                 <b style={{ color: "var(--on-gun)" }}>{site.name}</b>
                 <span style={{ color: "color-mix(in srgb, var(--on-gun) 55%, transparent)" }}>

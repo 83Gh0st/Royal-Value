@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { serviceGroups } from "@/lib/content";
+import Reveal from "./Reveal";
 
 export default function Services() {
   const [openId, setOpenId] = useState<string | null>(serviceGroups[0]?.id ?? null);
@@ -12,13 +13,16 @@ export default function Services() {
     <section className="sec sec--steel" id="services">
       <div className="wrap">
         <div className="sec__head sec__head--wide">
-          <h2 className="t-h2">Three disciplines. One contract.</h2>
-          <p className="lede">
-            Civil, MEP and HVAC each run as their own trade internally, but
-            they sit under a single Dubai licence — which is what lets us
-            coordinate them without a second contractor&rsquo;s margin in
-            between.
-          </p>
+          <Reveal>
+            <h2 className="t-h2">Three disciplines. One team.</h2>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <p className="lede">
+              Civil, MEP and HVAC each run as their own trade internally, so
+              we coordinate them ourselves on site instead of leaving it to
+              chance between subcontractors.
+            </p>
+          </Reveal>
         </div>
 
         <div className="svc-list">
@@ -48,7 +52,7 @@ export default function Services() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                      transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                     >
                       <div className="svc-row__panel-in">
                         {g.subgroups ? (
@@ -71,7 +75,12 @@ export default function Services() {
                             ))}
                           </ul>
                         )}
-                        <div className="svc-row__img">
+                        <motion.div
+                          className="svc-row__img"
+                          initial={{ opacity: 0, scale: 1.08 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                        >
                           <Image
                             src={g.image.src}
                             alt={g.image.alt}
@@ -79,7 +88,7 @@ export default function Services() {
                             sizes="(max-width: 860px) 100vw, 20rem"
                             style={{ objectFit: "cover" }}
                           />
-                        </div>
+                        </motion.div>
                       </div>
                     </motion.div>
                   )}

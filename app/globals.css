@@ -19,9 +19,9 @@
   --gun-2: #262d35;
   --on-gun: #eceeec;
   --gun-rule: #333b44;
-  --copper: #a8552b;      /* burnt copper — the one accent */
-  --copper-2: #8a4523;
-  --on-copper: #fbf3ee;
+  --copper: #eb1c25;      /* brand red, from the logo mark */
+  --copper-2: #c4141c;
+  --on-copper: #fff8f7;
   --amber: #d69a41;       /* rare second flourish — warning-tag use only */
 
   --shadow: 0 1px 2px rgba(20, 23, 26, 0.06), 0 16px 40px -22px rgba(20, 23, 26, 0.32);
@@ -47,9 +47,9 @@
     --gun-2: #17191d;
     --on-gun: #e9eae7;
     --gun-rule: #262a2f;
-    --copper: #c96b3a;
-    --copper-2: #e08350;
-    --on-copper: #1a0e07;
+    --copper: #ff4d4f;
+    --copper-2: #ff7375;
+    --on-copper: #1a0403;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -22px rgba(0, 0, 0, 0.75);
     --shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.5), 0 34px 70px -28px rgba(0, 0, 0, 0.85);
   }
@@ -66,9 +66,9 @@
   --gun-2: #17191d;
   --on-gun: #e9eae7;
   --gun-rule: #262a2f;
-  --copper: #c96b3a;
-  --copper-2: #e08350;
-  --on-copper: #1a0e07;
+  --copper: #ff4d4f;
+  --copper-2: #ff7375;
+  --on-copper: #1a0403;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 16px 40px -22px rgba(0, 0, 0, 0.75);
   --shadow-lg: 0 4px 10px rgba(0, 0, 0, 0.5), 0 34px 70px -28px rgba(0, 0, 0, 0.85);
 }
@@ -160,12 +160,7 @@ h1, h2, h3, h4 {
   gap: 1.25rem;
 }
 .logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; flex: none; color: var(--on-gun); }
-.logo__mark {
-  width: 2.3rem; height: 2.3rem; flex: none;
-  background: var(--copper); color: var(--on-copper);
-  display: grid; place-items: center;
-  font-family: var(--f-display); font-weight: 700; font-size: 1.05rem;
-}
+.logo__mark { width: 2.75rem; height: auto; flex: none; }
 .logo__txt { display: flex; flex-direction: column; line-height: 1.12; }
 .logo__txt b { font-family: var(--f-display); font-size: 1rem; font-weight: 700; }
 .logo__txt span { font-size: 0.68rem; color: color-mix(in srgb, var(--on-gun) 55%, transparent); }
@@ -294,34 +289,34 @@ h1, h2, h3, h4 {
 .sec__head--wide { max-width: 60rem; }
 
 /* ===========================================================================
-   MECHANISMS — asymmetric flowing list, not a card grid
+   WHY US — icon cards with a lift on hover
    =========================================================================== */
-.mech { display: flex; flex-direction: column; }
-.mech__row {
+.why-grid {
   display: grid;
-  grid-template-columns: minmax(0, 7rem) minmax(0, 1fr);
-  gap: 1.25rem 2.5rem;
-  align-items: start;
-  padding-block: 2.25rem;
-  border-top: 1px solid var(--rule);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
 }
-.sec--gun .mech__row { border-top-color: var(--gun-rule); }
-.mech__row:last-child { border-bottom: 1px solid var(--rule); }
-.sec--gun .mech__row:last-child { border-bottom-color: var(--gun-rule); }
-@media (max-width: 560px) {
-  .mech__row { grid-template-columns: 1fr; gap: 0.75rem; }
+@media (max-width: 860px) { .why-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .why-grid { grid-template-columns: 1fr; } }
+.why-card {
+  background: var(--paper);
+  padding: clamp(1.6rem, 2.4vw, 2.1rem);
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s ease;
 }
-.mech__fig {
-  font-family: var(--f-display); font-weight: 700; font-stretch: 80%;
-  font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 0.9; color: var(--copper);
+.why-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); z-index: 1; }
+.why-card__icon {
+  width: 2.75rem; height: 2.75rem;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: color-mix(in srgb, var(--copper) 12%, transparent);
+  color: var(--copper);
 }
-.mech__fig small {
-  display: block; font-family: var(--f-body); font-weight: 500; font-size: 0.72rem;
-  color: var(--muted); margin-top: 0.5rem; max-width: 10ch; line-height: 1.3;
-}
-.mech__body h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin-bottom: 0.6rem; }
-.mech__body p { font-size: 0.98rem; color: var(--muted); max-width: 48ch; }
-.sec--gun .mech__body p { color: color-mix(in srgb, var(--on-gun) 72%, transparent); }
+.why-card h3 { font-family: var(--f-body); font-weight: 700; font-size: 1.05rem; }
+.why-card p { font-size: 0.92rem; color: var(--muted); }
 
 /* ===========================================================================
    SERVICES — editorial expandable list
@@ -391,6 +386,7 @@ h1, h2, h3, h4 {
 @media (max-width: 720px) { .feature__in { grid-template-columns: 1fr; } }
 .feature__in h3 { font-size: clamp(1.6rem, 3.6vw, 2.6rem); }
 .feature__in p { font-size: 1.02rem; color: color-mix(in srgb, var(--on-gun) 85%, transparent); margin-top: 1rem; max-width: 42ch; }
+.feature__aside { align-self: end; display: flex; flex-direction: column; }
 
 /* ===========================================================================
    PROCESS — a genuine sequence, numbered
@@ -409,62 +405,50 @@ h1, h2, h3, h4 {
 .proc-row__body p { font-size: 0.95rem; color: color-mix(in srgb, var(--on-gun) 72%, transparent); max-width: 56ch; }
 
 /* ===========================================================================
-   PRICE TABLE + ESTIMATOR
+   TRUST — commitment statement + distinguished-client points
    =========================================================================== */
-.tbl-scroll { overflow-x: auto; border: 1px solid var(--rule); }
-table { border-collapse: collapse; width: 100%; min-width: 42rem; }
-caption { text-align: left; padding: 1rem 1.15rem; font-size: 0.85rem; color: var(--muted); border-bottom: 1px solid var(--rule); background: var(--paper); }
-th, td { text-align: left; padding: 1rem 1.15rem; border-bottom: 1px solid var(--rule); font-size: 0.94rem; vertical-align: top; }
-thead th { background: var(--ink); color: var(--steel); font-weight: 600; border-bottom: 0; }
-tbody tr:last-child th, tbody tr:last-child td { border-bottom: 0; }
-tbody th { font-family: var(--f-display); font-weight: 700; font-size: 1.1rem; white-space: nowrap; }
-td.rate { font-variant-numeric: tabular-nums; font-weight: 500; white-space: nowrap; }
-tr.is-focus { background: color-mix(in srgb, var(--copper) 7%, transparent); }
-tr.is-focus td.rate { color: var(--copper-2); font-weight: 700; }
-.pill {
-  display: inline-block; font-size: 0.64rem; font-weight: 700;
-  background: var(--copper); color: var(--on-copper);
-  padding: 0.16rem 0.5rem; margin-left: 0.55rem; vertical-align: 2px;
+.trust-top { display: grid; grid-template-columns: minmax(0,20rem) minmax(0,1fr); gap: 2.5rem 3rem; }
+@media (max-width: 820px) { .trust-top { grid-template-columns: 1fr; } }
+.strengths { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.2rem 1.5rem; margin-top: 1.5rem; }
+@media (max-width: 560px) { .strengths { grid-template-columns: 1fr; } }
+.strengths li {
+  font-size: 0.88rem; padding: 0.5rem 0 0.5rem 1.15rem; position: relative;
+  color: color-mix(in srgb, var(--on-gun) 78%, transparent);
+  border-top: 1px solid var(--gun-rule);
 }
+.strengths li::before { content: ""; position: absolute; left: 0; top: 1.1rem; width: 0.55rem; height: 1px; background: var(--copper); }
+.trust-div { height: 1px; background: var(--gun-rule); margin: clamp(3rem, 6vw, 4.5rem) 0; }
+.trust-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.75rem; margin-top: 2.5rem; }
+@media (max-width: 980px) { .trust-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 640px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+.trust-card { display: flex; flex-direction: column; gap: 0.6rem; color: var(--copper); }
+.trust-card h4 { font-family: var(--f-body); font-weight: 700; font-size: 0.96rem; color: var(--on-gun); }
+.trust-card p { font-size: 0.86rem; color: color-mix(in srgb, var(--on-gun) 70%, transparent); }
 
-.two { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
-@media (max-width: 820px) { .two { grid-template-columns: 1fr; } }
-.panel { border: 1px solid var(--rule); padding: 1.5rem; background: var(--paper); }
-.panel h4 { font-size: 1.05rem; margin-bottom: 1rem; font-family: var(--f-body); font-weight: 700; }
-.panel li { font-size: 0.92rem; padding: 0.45rem 0 0.45rem 1.4rem; position: relative; border-top: 1px solid var(--rule); color: var(--ink-2); }
-.panel li:first-child { border-top: 0; }
-.panel li::before { position: absolute; left: 0; top: 0.42rem; font-size: 0.9rem; font-weight: 700; }
-.panel--in li::before { content: "+"; color: var(--copper); }
-.panel--out li::before { content: "\2212"; color: var(--muted); }
+/* ===========================================================================
+   INDUSTRIES — flowing chip cloud
+   =========================================================================== */
+.chips-wrap { display: flex; flex-wrap: wrap; gap: 0.65rem; }
+.chip {
+  font-size: 0.9rem; font-weight: 500; color: var(--ink-2);
+  border: 1px solid var(--rule); background: var(--paper);
+  padding: 0.55rem 1.1rem;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.chip:hover { border-color: var(--copper); color: var(--copper-2); transform: translateY(-2px); }
 
-.est { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,22rem); border: 1px solid var(--gun-rule); margin-top: 2.5rem; }
-@media (max-width: 820px) { .est { grid-template-columns: 1fr; } }
-.est__form, .est__out { background: var(--gun); padding: clamp(1.5rem, 3vw, 2.25rem); }
-.est__form { border-right: 1px solid var(--gun-rule); }
-@media (max-width: 820px) { .est__form { border-right: 0; border-bottom: 1px solid var(--gun-rule); } }
-.est__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem 1.4rem; }
-@media (max-width: 560px) { .est__row { grid-template-columns: 1fr; } }
-.field { display: flex; flex-direction: column; gap: 0.45rem; margin-bottom: 1.2rem; }
-.field label { font-size: 0.76rem; font-weight: 500; color: color-mix(in srgb, var(--on-gun) 62%, transparent); }
-.est input, .est select {
-  font-family: var(--f-body); font-size: 0.98rem;
-  background: color-mix(in srgb, #000 25%, transparent);
-  border: 1px solid var(--gun-rule); color: var(--on-gun);
-  padding: 0.72rem 0.85rem; width: 100%;
+/* ===========================================================================
+   MAP EMBED
+   =========================================================================== */
+.map-embed { position: relative; border: 1px solid var(--rule); background: var(--paper); }
+.map-embed iframe { width: 100%; height: 15rem; border: 0; display: block; filter: grayscale(0.15) contrast(1.05); }
+.map-embed__link {
+  display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+  padding: 0.85rem; font-size: 0.86rem; font-weight: 600;
+  text-decoration: none; color: var(--copper-2); border-top: 1px solid var(--rule);
+  background: var(--paper); transition: background 0.15s ease;
 }
-.est input:focus-visible, .est select:focus-visible { border-color: var(--copper); }
-.est__out { display: flex; flex-direction: column; justify-content: center; gap: 0.4rem; }
-.est__label { font-size: 0.8rem; color: color-mix(in srgb, var(--on-gun) 60%, transparent); margin-bottom: 0.2rem; }
-.est__val {
-  font-family: var(--f-display); font-weight: 700; font-stretch: 85%;
-  font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.1;
-  color: var(--on-gun); display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem 0.5rem;
-}
-.est__val .cur { font-family: var(--f-body); font-size: 0.5em; font-weight: 500; color: color-mix(in srgb, var(--on-gun) 55%, transparent); }
-.est__val .dash { color: var(--copper); font-weight: 400; }
-.est__note { font-size: 0.82rem; line-height: 1.5; color: color-mix(in srgb, var(--on-gun) 60%, transparent); margin-top: 0.7rem; }
-.est__bar { height: 3px; background: var(--gun-rule); position: relative; margin: 1rem 0 0.2rem; }
-.est__bar i { position: absolute; inset-block: 0; background: var(--copper); transition: left 0.35s ease, right 0.35s ease; }
+.map-embed__link:hover { background: var(--paper-2); }
 
 /* ===========================================================================
    COVERAGE — simple list, not a card kit
@@ -480,42 +464,33 @@ tr.is-focus td.rate { color: var(--copper-2); font-weight: 700; }
 .cov__row p { font-size: 0.98rem; color: var(--muted); align-self: center; max-width: 52ch; }
 
 /* ===========================================================================
-   CAPABILITY — org / fleet / suppliers / licences
+   CLIENTS — two-row counter-scrolling marquee
    =========================================================================== */
-.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; }
-@media (max-width: 860px) { .cap-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
-.cap-col h4 { font-family: var(--f-body); font-weight: 700; font-size: 1rem; margin-bottom: 1rem; }
-.cap-col ul { display: flex; flex-direction: column; }
-.cap-col li { font-size: 0.92rem; padding: 0.55rem 0; border-top: 1px solid var(--gun-rule); color: color-mix(in srgb, var(--on-gun) 82%, transparent); display: flex; justify-content: space-between; gap: 1rem; }
-.cap-col li:first-child { border-top: 0; }
-.cap-col li b { color: var(--on-gun); font-weight: 600; }
-
-.suppliers { display: flex; flex-wrap: wrap; gap: 0.5rem 0.9rem; }
-.suppliers li { font-size: 0.88rem; color: color-mix(in srgb, var(--on-gun) 78%, transparent); }
-.suppliers li::after { content: "·"; margin-left: 0.9rem; color: var(--gun-rule); }
-.suppliers li:last-child::after { content: none; }
-
-/* ===========================================================================
-   CLIENTS — flowing trust wall, no bordered chips
-   =========================================================================== */
-.clients-wall { display: flex; flex-wrap: wrap; gap: 0.3em 1.6em; }
-.clients-wall span {
-  font-family: var(--f-display); font-weight: 600; font-stretch: 92%;
-  font-size: clamp(1.1rem, 2.4vw, 1.7rem);
-  color: var(--ink-2);
-  line-height: 1.5;
+.marquee-stack { display: flex; flex-direction: column; gap: 1.1rem; padding-block: 0.5rem; }
+.marquee {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
 }
-
-/* ===========================================================================
-   PROJECT RECORD
-   =========================================================================== */
-.rec { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; }
-@media (max-width: 900px) { .rec { grid-template-columns: 1fr; } }
-.rec__col h3 { font-family: var(--f-body); font-weight: 700; font-size: 1.05rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--copper); margin-bottom: 0.4rem; }
-.rec__list li { padding: 0.65rem 0; border-top: 1px solid var(--rule); }
-.rec__list li:first-child { border-top: 0; }
-.rec__list b { display: block; font-size: 0.92rem; font-weight: 600; line-height: 1.35; }
-.rec__list span { display: block; font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+.marquee__track {
+  display: flex; width: max-content;
+  animation: marquee-left 46s linear infinite;
+}
+.marquee__track--reverse { animation-name: marquee-right; animation-duration: 52s; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+.marquee__item {
+  font-family: var(--f-display); font-weight: 600; font-stretch: 90%;
+  font-size: clamp(1.15rem, 2.3vw, 1.6rem);
+  color: var(--ink-2);
+  padding: 0 1.5rem;
+  white-space: nowrap;
+  border-right: 1px solid var(--rule);
+  transition: color 0.2s ease;
+}
+.marquee__item:hover { color: var(--copper-2); }
+@keyframes marquee-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .marquee__track { animation: none; } }
 
 /* ===========================================================================
    ADDITIONAL SERVICES — plain, secondary

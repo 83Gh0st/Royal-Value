@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { faqJsonLd, faqs } from "@/lib/content";
+import Reveal from "./Reveal";
 
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -15,10 +16,13 @@ export default function FAQ() {
       />
       <div className="wrap">
         <div className="sec__head">
-          <h2 className="t-h2">The questions you&rsquo;re actually asking.</h2>
+          <Reveal>
+            <h2 className="t-h2">The questions you&rsquo;re actually asking.</h2>
+          </Reveal>
         </div>
 
-        <div className="faq">
+        <Reveal delay={0.08}>
+          <div className="faq">
             {faqs.map((item, i) => {
               const open = openIndex === i;
               return (
@@ -56,6 +60,7 @@ export default function FAQ() {
               );
             })}
           </div>
+        </Reveal>
       </div>
     </section>
   );

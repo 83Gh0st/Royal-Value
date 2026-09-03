@@ -1,34 +1,42 @@
 # RV Group Contracting — Next.js site
 
 A Next.js (App Router) build of the RV Group Contracting site, written from
-the company's actual 2025 profile, UAE trade licences and VAT certificates
-— not a generic template. Design is grounded in the real trade (civil,
-MEP, HVAC) rather than a decorative "blueprint" theme.
+the company's real trade licences, VAT certificates and positioning brief.
 
-## What's in here
+## What's new in this revision
 
-- **Next.js 16 (App Router) + TypeScript + Tailwind CSS v4**
-- **Real content**: licence numbers, expiry dates, registered address,
-  client list, project history and the services taxonomy all come from
-  `RVEM-company_Profile_2025.pdf` and the attached trade licences — see
-  `lib/content.ts`, the single source of truth for every piece of text.
-- **A distinct design system**: gunmetal + cast-concrete + burnt-copper
-  palette, Big Shoulders Display (industrial condensed) paired with Inter,
-  full-bleed photography, an editorial expandable services list and a
-  genuine 7-stage numbered process — deliberately not a generic
-  card-grid-with-eyebrow-labels template.
-- **Framer Motion** used sparingly: one orchestrated hero entrance,
-  count-up stats, an animated mobile menu and two accordions (services,
-  FAQ) — not a fade-up animation on every section.
-- **Working budget estimator** (`components/Estimator.tsx`) — ports the
-  same villa/warehouse rate logic to React state.
-- **Working contact form** — posts to `app/api/contact/route.ts`, which
-  validates and logs the enquiry (see below for wiring it to email).
-- **Dark / light mode toggle**, persisted, no-flash on load.
-- **SEO**: metadata, `GeneralContractor` + `FAQPage` JSON-LD, an
-  auto-generated Open Graph image, `sitemap.ts` and `robots.ts`.
-- Accessible by default: skip link, focus-visible states, semantic
-  landmarks, `prefers-reduced-motion` respected throughout.
+- **Real logo, everywhere.** The uploaded PNG was traced to a proper vector
+  (`public/logo-mark.svg`, `app/icon.svg`) via potrace and used in the nav
+  bar, footer, favicon and the auto-generated Open Graph image — not a
+  placeholder "RV" box.
+- **Brand colour extracted from the logo.** The accent colour (`--copper`
+  in `app/globals.css`) is the logo's actual red (`#EB1C25`), not an
+  invented palette.
+- **Positioning corrected to "execution, not design engineering"** per the
+  client brief — hero copy, FAQ answers and the feature bands no longer
+  imply we produce architectural drawings; copy throughout now reflects
+  that we execute to approved drawings and specifications.
+- **Pricing table, budget estimator and the capability (org/fleet/supplier)
+  section have been removed entirely**, along with the "Villas &
+  residential / Warehouses / Government" project-record columns.
+- **New sections**, integrating the client-supplied copy: "Why clients
+  choose us" (icon cards), "Our Approach" (a genuine 6-stage process:
+  Understand → Plan → Execute → Coordinate → Test & Commission →
+  Handover), "Industries we serve" (chip cloud), and "Our Commitment /
+  Reputation is built on trust" (the distinguished-clients trust section).
+- **Clients section redesigned** as a two-row, opposite-direction marquee
+  of client names (pauses on hover) — "Presidential Court" removed from
+  the visible list per client instruction; the accompanying copy now
+  explains that some clients are kept confidential, which is also why.
+- **A live map** in the contact section (Google Maps embed + a "Get
+  directions" link to the original share URL), pointing at the Sharjah
+  office coordinates the client supplied.
+- **More motion.** Parallax on the hero and feature-band photography,
+  directional scroll reveals throughout, animated counters, a scroll
+  progress bar, hover-lift cards, and a scale-in on the services
+  accordion's image when a panel opens.
+- **Contact email switched to `sales@royalvaluedxb.com`** for the contact
+  section specifically (footer/JSON-LD use it too now).
 
 ## Getting started
 
@@ -51,57 +59,51 @@ app/
   layout.tsx          Root layout: fonts, metadata, theme script, JSON-LD
   page.tsx             Assembles every section in order
   globals.css          Design tokens + component styles
+  icon.svg             Favicon / app icon (self-contained, dark bg + mark)
+  favicon.ico          Multi-resolution fallback, generated from icon.svg
   opengraph-image.tsx  Auto-generated 1200×630 social preview image
   api/contact/route.ts Contact form handler
 components/            One component per section
-lib/content.ts          All copy, rates, licences, clients, projects, FAQs — edit here
+lib/content.ts          All copy, licences, clients, FAQs, map coords — edit here
+lib/logo-paths.ts       Traced SVG path data for the logo mark (shared by the OG image)
+public/logo-mark.svg    Logo mark for on-page use (light mark, for dark backgrounds)
 ```
 
 ### Editing content
 
-Everything text-based lives in `lib/content.ts`: the services taxonomy
-(Civil / MEP / HVAC, with the Mechanical/Electrical/Plumbing breakdown),
-the rate card, licence numbers and expiry dates, the client list, selected
-projects, technical staff, fleet, suppliers and FAQs. Change it there and
-every component that uses it updates automatically.
+Everything text-based lives in `lib/content.ts`. The map location, sales
+email, licence expiry dates, client list, services taxonomy, "Our
+Approach" steps, and every FAQ answer are all there.
 
 ### Editing the look
 
-Colours, type scale and every component class live in `app/globals.css`
-as CSS custom properties and plain CSS (`--steel`, `--gun`, `--copper`,
-etc.), with Tailwind utilities available where convenient.
+Colours and every component class live in `app/globals.css` as CSS custom
+properties (`--steel`, `--gun`, `--copper`, etc.), with Tailwind utilities
+available where convenient. `--copper` is the brand red — change it there
+to re-theme the whole site.
+
+### Editing the map
+
+`lib/content.ts` exports `hq` with `lat`/`lng`/`zoom` and the original
+Google Maps share URL. The embed URL is derived automatically from the
+coordinates (no API key required, using Google's keyless embed endpoint).
+If Google deprecates that endpoint, swap in `google.com/maps/embed/v1/place`
+with an API key instead.
 
 ## Wiring the contact form to email
 
 `app/api/contact/route.ts` currently validates each submission and
-`console.log`s it — the form works end-to-end, but nothing is emailed yet.
-Before going live, wire the `console.log(...)` call to a real provider:
-[Resend](https://resend.com), [Web3Forms](https://web3forms.com), or your
-own SMTP relay via `nodemailer`.
-
-## Before you deploy
-
-- Search the project for `[EDIT]` (currently just the contact route) for
-  anything that still needs a real integration.
-- Swap in real jobsite photography when you have it — see
-  [Image credits](#image-credits) below for what's there now.
-- Confirm the licence expiry dates in `lib/content.ts` are still current;
-  they were correct as of the January 2025 documents this was built from.
+`console.log`s it. Before going live, wire the `console.log(...)` call to
+a real provider: [Resend](https://resend.com), [Web3Forms](https://web3forms.com),
+or your own SMTP relay via `nodemailer`.
 
 ## Image credits
 
 Photography is served from Unsplash's CDN under the
 [Unsplash License](https://unsplash.com/license) (free for commercial use,
-no attribution required).
-
-| Section | Photographer |
-|---|---|
-| Hero, feature band (process) | Samuel Regan-Asante |
-| Services — MEP, feature band (own trade) | colsan ltda |
-| Services — Civil / HVAC | John Fornander, Theo Marjoram |
-| Feature band (engineering) | Daniel McCullough |
-| Services — Civil (worker) | Josh Olalde |
-| Interior reference | Lotus Design N Print |
+no attribution required) — see the `image.alt` text in `lib/content.ts`
+and `app/page.tsx` for what's used where. The logo is the client's own
+artwork, vectorised for this build.
 
 ## Tech notes
 

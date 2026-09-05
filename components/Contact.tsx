@@ -47,7 +47,17 @@ export default function Contact() {
   }
 
   return (
-    <section className="sec sec--steel" id="quote">
+    <section className="sec sec--gun trust-bg" id="quote">
+      <div className="trust-bg__media">
+        <Image
+          src={galleryImages.contactBg.src}
+          alt={galleryImages.contactBg.alt}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+      <div className="trust-bg__scrim" />
       <div className="wrap">
         <div className="sec__head">
           <Reveal>
@@ -63,7 +73,7 @@ export default function Contact() {
 
         <div className="contact">
           <Reveal dir="left">
-            <div>
+            <div className="contact-card">
               {status === "success" && (
                 <p className="form__ok" role="status">
                   Thank you. Your enquiry has been sent. We&rsquo;ll call you back today.
@@ -131,50 +141,42 @@ export default function Contact() {
           </Reveal>
 
           <Reveal dir="right" delay={0.1}>
-            <div className="contact__side">
-              <div className="contact__photo">
-                <Image
-                  src={galleryImages.contactSide.src}
-                  alt={galleryImages.contactSide.alt}
-                  fill
-                  sizes="(max-width: 900px) 100vw, 25rem"
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
+            <div className="contact-card">
+              <div className="contact__side">
+                <dl className="info">
+                  <dt>Call or WhatsApp</dt>
+                  <dd><a href={site.phoneHref}>{contactInfo.callWhatsapp}</a></dd>
+                  <dt>Sales enquiries</dt>
+                  <dd><a href={site.salesEmailHref}>{contactInfo.email}</a></dd>
+                  <dt>{hq.label}</dt>
+                  <dd>
+                    {contactInfo.sharjah.company}<br />
+                    {contactInfo.sharjah.line1}<br />
+                    {contactInfo.sharjah.line2}
+                  </dd>
+                  <dt>Dubai, registered office</dt>
+                  <dd>
+                    {contactInfo.dubai.line1}<br />
+                    {contactInfo.dubai.line2}
+                  </dd>
+                  <dt>Abu Dhabi branch</dt>
+                  <dd>{contactInfo.abudhabi.line1}</dd>
+                  <dt>Hours</dt>
+                  <dd>{contactInfo.hours}</dd>
+                </dl>
 
-              <dl className="info">
-                <dt>Call or WhatsApp</dt>
-                <dd><a href={site.phoneHref}>{contactInfo.callWhatsapp}</a></dd>
-                <dt>Sales enquiries</dt>
-                <dd><a href={site.salesEmailHref}>{contactInfo.email}</a></dd>
-                <dt>{hq.label}</dt>
-                <dd>
-                  {contactInfo.sharjah.company}<br />
-                  {contactInfo.sharjah.line1}<br />
-                  {contactInfo.sharjah.line2}
-                </dd>
-                <dt>Dubai, registered office</dt>
-                <dd>
-                  {contactInfo.dubai.line1}<br />
-                  {contactInfo.dubai.line2}
-                </dd>
-                <dt>Abu Dhabi branch</dt>
-                <dd>{contactInfo.abudhabi.line1}</dd>
-                <dt>Hours</dt>
-                <dd>{contactInfo.hours}</dd>
-              </dl>
-
-              <div className="map-embed">
-                <iframe
-                  src={hq.embedUrl}
-                  title={`Map to ${contactInfo.sharjah.company}`}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-                <a className="map-embed__link" href={hq.shareUrl} target="_blank" rel="noopener noreferrer">
-                  Get directions ↗
-                </a>
+                <div className="map-embed">
+                  <iframe
+                    src={hq.embedUrl}
+                    title={`Map to ${contactInfo.sharjah.company}`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
+                  />
+                  <a className="map-embed__link" href={hq.shareUrl} target="_blank" rel="noopener noreferrer">
+                    Get directions ↗
+                  </a>
+                </div>
               </div>
             </div>
           </Reveal>

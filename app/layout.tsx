@@ -8,9 +8,6 @@ export const metadata: Metadata = {
     default: "RV Group Contracting | Civil Construction, MEP & HVAC, UAE",
     template: "%s | RV Group Contracting",
   },
-    verification: {
-    google: "3jagrlGqmiE1-G0AJpzU5GAnXxMwHsQkVJl9shf-L14",
-  },
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
@@ -62,7 +59,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <meta name="google-site-verification" content="3jagrlGqmiE1-G0AJpzU5GAnXxMwHsQkVJl9shf-L14" />
       </head>
       <body>{children}</body>
     </html>

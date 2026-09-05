@@ -436,31 +436,6 @@ h1, h2, h3, h4 {
 /* ===========================================================================
    INDUSTRIES : flowing chip cloud
    =========================================================================== */
-.industries-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0.9rem;
-  margin-bottom: 2.5rem;
-}
-@media (max-width: 860px) { .industries-grid { grid-template-columns: repeat(2, 1fr); } }
-.industries-grid__item {
-  position: relative;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  background: var(--paper-2);
-}
-.industries-grid__item:nth-child(2) { aspect-ratio: 3/4.9; margin-top: -1.6rem; }
-@media (max-width: 860px) { .industries-grid__item:nth-child(2) { margin-top: 0; } }
-.industries-grid__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-.industries-grid__item:hover img { transform: scale(1.08); }
-.industries-grid__item span {
-  position: absolute; left: 0.85rem; bottom: 0.75rem; z-index: 1;
-  font-size: 0.78rem; font-weight: 600; color: #fff;
-}
-.industries-grid__item::after {
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.6) 100%);
-}
 .chips-wrap { display: flex; flex-wrap: wrap; gap: 0.65rem; }
 .chip {
   font-size: 0.9rem; font-weight: 500; color: var(--ink-2);
@@ -486,25 +461,59 @@ h1, h2, h3, h4 {
 /* ===========================================================================
    COVERAGE : simple list, not a card kit
    =========================================================================== */
-.cov { border-top: 1px solid var(--rule); }
-.cov__row {
-  display: grid; grid-template-columns: minmax(0,14rem) minmax(0,1fr);
-  gap: 0.5rem 2.5rem; padding-block: 2rem; border-bottom: 1px solid var(--rule);
+.cov-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+@media (max-width: 980px) { .cov-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cov-grid { grid-template-columns: 1fr; } }
+.cov-card {
+  position: relative;
+  min-height: 22rem;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
 }
-@media (max-width: 700px) { .cov__row { grid-template-columns: 1fr; } }
-.cov__row h3 { font-size: 1.5rem; }
-.cov__row span { display: block; font-size: 0.82rem; color: var(--copper-2); margin-top: 0.35rem; }
-.cov__row p { font-size: 0.98rem; color: var(--muted); align-self: center; max-width: 52ch; }
+.cov-card__media { position: absolute; inset: 0; z-index: 0; }
+.cov-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+.cov-card:hover .cov-card__media img { transform: scale(1.1); }
+.cov-card__scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(180deg, rgba(13,15,18,0.05) 0%, rgba(13,15,18,0.55) 55%, rgba(13,15,18,0.92) 100%);
+}
+.cov-card__in { position: relative; z-index: 2; padding: 1.5rem; color: var(--on-gun); }
+.cov-card__in h3 { font-size: 1.4rem; font-family: var(--f-display); }
+.cov-card__in span { display: block; font-size: 0.74rem; color: color-mix(in srgb, var(--on-gun) 70%, transparent); margin: 0.4rem 0 0.6rem; }
+.cov-card__in p { font-size: 0.86rem; color: color-mix(in srgb, var(--on-gun) 82%, transparent); max-width: 30ch; }
 
 /* ===========================================================================
    CLIENTS : two-row counter-scrolling marquee
    =========================================================================== */
 .marquee-stack { display: flex; flex-direction: column; gap: 1.1rem; padding-block: 0.5rem; }
-.project-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.9rem; margin-top: 3rem; }
-@media (max-width: 760px) { .project-strip { grid-template-columns: repeat(2, 1fr); } }
-.project-strip__item { position: relative; aspect-ratio: 4/3; overflow: hidden; border: 1px solid var(--rule); }
-.project-strip__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease; filter: grayscale(0.35); }
-.project-strip__item:hover img { transform: scale(1.07); filter: grayscale(0); }
+.img-carousel {
+  overflow: hidden; margin-top: 3rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+}
+.img-carousel__track { display: flex; width: max-content; gap: 1rem; animation: carousel-left 38s linear infinite; }
+.img-carousel:hover .img-carousel__track { animation-play-state: paused; }
+.img-carousel__item {
+  position: relative;
+  width: clamp(13rem, 22vw, 18rem);
+  aspect-ratio: 4/3;
+  flex: none;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.img-carousel__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), filter 0.4s ease; filter: grayscale(0.3); }
+.img-carousel__item:hover img { transform: scale(1.08); filter: grayscale(0); }
+.img-carousel__item span {
+  position: absolute; left: 0.7rem; bottom: 0.6rem; z-index: 1;
+  font-size: 0.72rem; font-weight: 600; color: #fff;
+}
+.img-carousel__item[data-label]::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.55) 100%);
+}
+@keyframes carousel-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .img-carousel__track { animation: none; } }
 .marquee {
   overflow: hidden;
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
@@ -554,14 +563,9 @@ h1, h2, h3, h4 {
 .extra li p { font-size: 0.9rem; color: var(--muted); }
 
 /* ===========================================================================
-   FAQ
+   FAQ : full-bleed background photo behind the accordion
    =========================================================================== */
-.faq-wrap { display: grid; grid-template-columns: minmax(0, 20rem) minmax(0, 1fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
-@media (max-width: 860px) { .faq-wrap { grid-template-columns: 1fr; } }
-.faq-photo { position: sticky; top: 6rem; aspect-ratio: 3/4; overflow: hidden; border: 1px solid var(--rule); }
-@media (max-width: 860px) { .faq-photo { position: static; aspect-ratio: 16/9; } }
-.faq-photo img { width: 100%; height: 100%; object-fit: cover; }
-.faq { border-top: 1px solid var(--rule); max-width: none; }
+.faq { border-top: 1px solid var(--rule); max-width: 54rem; }
 .faq-item { border-bottom: 1px solid var(--rule); }
 .faq-item__btn {
   width: 100%; text-align: left; background: none; border: 0; cursor: pointer; color: inherit;
@@ -571,32 +575,43 @@ h1, h2, h3, h4 {
 }
 .faq-item__icon { font-size: 1.3rem; color: var(--copper); font-weight: 300; flex: none; width: 1.2rem; text-align: center; }
 .faq-item__panel p { padding: 0 0 1.4rem; font-size: 0.96rem; color: var(--muted); max-width: 62ch; }
+/* on a dark photo backdrop (.trust-bg), swap the hairlines and body text for on-gun tones */
+.trust-bg .faq { border-top-color: var(--gun-rule); }
+.trust-bg .faq-item { border-bottom-color: var(--gun-rule); }
+.trust-bg .faq-item__panel p { color: color-mix(in srgb, var(--on-gun) 74%, transparent); }
 
 /* ===========================================================================
-   CONTACT
+   CONTACT : full-bleed background photo, two matching elevated cards
    =========================================================================== */
-.contact { display: grid; grid-template-columns: 1fr minmax(0, 25rem); gap: clamp(2rem, 4vw, 4rem); align-items: start; }
+.contact { display: grid; grid-template-columns: 1fr minmax(0, 25rem); gap: clamp(1.5rem, 3vw, 2.5rem); align-items: stretch; }
 @media (max-width: 900px) { .contact { grid-template-columns: 1fr; } }
+.contact-card {
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  box-shadow: var(--shadow-lg);
+  padding: clamp(1.6rem, 2.6vw, 2.25rem);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .form { display: flex; flex-direction: column; }
 .form .f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0 1.25rem; }
 @media (max-width: 560px) { .form .f-row { grid-template-columns: 1fr; } }
 .form label { font-size: 0.76rem; font-weight: 500; color: var(--muted); margin-bottom: 0.4rem; display: block; }
 .form input, .form select, .form textarea {
   font-family: var(--f-body); font-size: 0.98rem; width: 100%;
-  background: var(--paper); border: 1px solid var(--rule); color: var(--ink);
+  background: var(--steel); border: 1px solid var(--rule); color: var(--ink);
   padding: 0.78rem 0.9rem; margin-bottom: 1.15rem;
 }
 .form textarea { min-height: 6.5rem; resize: vertical; }
 .form input:focus-visible, .form select:focus-visible, .form textarea:focus-visible { border-color: var(--copper); }
 .form .btn { margin-top: 0.3rem; align-self: flex-start; }
 .form__note { font-size: 0.8rem; color: var(--muted); margin-top: 1rem; max-width: 46ch; }
-.form__ok { border-left: 3px solid var(--copper); background: var(--paper); padding: 1rem 1.15rem; font-size: 0.94rem; margin-bottom: 1.1rem; }
-.form__err { border-left: 3px solid var(--muted); background: var(--paper); padding: 1rem 1.15rem; font-size: 0.94rem; margin-bottom: 1.1rem; }
+.form__ok { border-left: 3px solid var(--copper); background: var(--steel); padding: 1rem 1.15rem; font-size: 0.94rem; margin-bottom: 1.1rem; }
+.form__err { border-left: 3px solid var(--muted); background: var(--steel); padding: 1rem 1.15rem; font-size: 0.94rem; margin-bottom: 1.1rem; }
 
-.contact__side { display: flex; flex-direction: column; gap: 1.5rem; }
-.contact__photo { position: relative; aspect-ratio: 16/10; overflow: hidden; border: 1px solid var(--rule); }
-.contact__photo img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
-.contact__photo:hover img { transform: scale(1.06); }
+.contact__side { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; height: 100%; }
 .info { margin: 0; }
 .info dt { font-size: 0.76rem; color: var(--muted); margin-bottom: 0.3rem; }
 .info dd { margin: 0 0 1.1rem; font-size: 1rem; }

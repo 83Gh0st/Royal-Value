@@ -3,10 +3,12 @@ import { galleryImages, projectTypes } from "@/lib/content";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 export default function Industries() {
+  const doubledImages = [...galleryImages.industries, ...galleryImages.industries];
+
   return (
     <section className="sec sec--steel">
       <div className="wrap">
-        <div className="sec__head" style={{ marginBottom: "2rem" }}>
+        <div className="sec__head" style={{ marginBottom: "0" }}>
           <Reveal>
             <h2 className="t-h2">Industries we serve.</h2>
           </Reveal>
@@ -17,16 +19,22 @@ export default function Industries() {
             </p>
           </Reveal>
         </div>
+      </div>
 
-        <RevealGroup className="industries-grid" stagger={0.06}>
-          {galleryImages.industries.map((img) => (
-            <RevealItem className="industries-grid__item" key={img.label} amount={16}>
-              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 860px) 50vw, 25vw" style={{ objectFit: "cover" }} />
-              <span>{img.label}</span>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+      <Reveal delay={0.12}>
+        <div className="img-carousel">
+          <div className="img-carousel__track">
+            {doubledImages.map((img, i) => (
+              <div className="img-carousel__item" data-label key={`${img.src}-${i}`}>
+                <Image src={img.src} alt={img.alt} fill sizes="18rem" style={{ objectFit: "cover" }} />
+                <span>{img.label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
+      <div className="wrap" style={{ marginTop: "2.5rem" }}>
         <RevealGroup className="chips-wrap" as="ul" stagger={0.03}>
           {projectTypes.map((t) => (
             <RevealItem as="li" className="chip" key={t} amount={12}>

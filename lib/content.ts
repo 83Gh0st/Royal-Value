@@ -18,8 +18,8 @@ export const site = {
     "https://wa.me/971552313467?text=Hi%20RV%20Group%2C%20I%27d%20like%20to%20discuss%20a%20project.",
   email: "info@royalvaluedxb.com",
   emailHref: "mailto:info@royalvaluedxb.com",
-  salesEmail: "sales@royalvaluedxb.com",
-  salesEmailHref: "mailto:sales@royalvaluedxb.com",
+  salesEmail: "groupsales@royalvaluedxb.com",
+  salesEmailHref: "mailto:groupsales@royalvaluedxb.com",
   contactPerson: "Azeez Shahul Hameed",
   contactPersonTitle: "Technical Manager",
   founded: 2007,
@@ -285,21 +285,37 @@ export const coverage = [
     emirate: "Dubai",
     tag: "DED Licence 592798 · valid to 14 Mar 2026",
     body: "Royal Value Electromechanical LLC, Al Mazoon Building, Damascus Street, Al Qusais. Building Contracting, Electromechanical and HVAC activities on one licence since 2007.",
+    image: {
+      src: "https://images.unsplash.com/photo-1748373461646-f6b6d6816f05",
+      alt: "Aerial view of Dubai's coastline and skyline",
+    },
   },
   {
     emirate: "Sharjah",
     tag: "SEDD Licence 777338 · valid to 2 Feb 2026",
     body: "Royal Value Technical Contracting LLC, Industrial Area 15, Muwaileh, covering air-conditioning units, sixth-category contracting and sanitary works.",
+    image: {
+      src: "https://images.unsplash.com/photo-1758789667762-56175fe4601c",
+      alt: "Modern industrial building exterior with loading docks",
+    },
   },
   {
     emirate: "Ajman",
     tag: "Project basis: Ajman Municipality",
     body: "Delivered HVAC and cold-storage works for Ajman Municipality at Ocean Fisheries; registered per project with the municipality.",
+    image: {
+      src: "https://images.unsplash.com/photo-1599995903128-531fc7fb694b",
+      alt: "Construction cranes over a building site at low sun",
+    },
   },
   {
     emirate: "Abu Dhabi",
     tag: "Economic Licence CN-5446200 · valid to 31 Aug 2026",
     body: "Branch opened July 2024 for palace, camp and infrastructure execution at Musaffah for distinguished private clients.",
+    image: {
+      src: "https://images.unsplash.com/photo-1668060742975-9a462159b0bd",
+      alt: "Abu Dhabi Corniche skyline over the water",
+    },
   },
 ];
 
@@ -404,7 +420,7 @@ export const faqs = [
 // ── Supplementary photography (stock, for layout, swap for real project
 // photos when available) ────────────────────────────────────────────────
 export const galleryImages = {
-  faqSide: {
+  faqBg: {
     src: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
     alt: "Living room interior with a marble fireplace and white sofas",
   },
@@ -412,7 +428,7 @@ export const galleryImages = {
     src: "https://images.unsplash.com/photo-1587582423116-ec07293f0395",
     alt: "Construction worker in a hard hat working on a building frame",
   },
-  contactSide: {
+  contactBg: {
     src: "https://images.unsplash.com/photo-1554469384-e58fac16e23a",
     alt: "Low angle photograph of a modern high-rise building",
   },
@@ -437,6 +453,16 @@ export const galleryImages = {
       alt: "Modern industrial building exterior with loading docks",
       label: "Industrial",
     },
+    {
+      src: "https://images.unsplash.com/photo-1599995903128-531fc7fb694b",
+      alt: "Construction cranes over a building site at low sun",
+      label: "Infrastructure",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+      alt: "Living room interior with a marble fireplace",
+      label: "Renovation & fit-out",
+    },
   ],
   projects: [
     {
@@ -454,6 +480,14 @@ export const galleryImages = {
     {
       src: "https://images.unsplash.com/photo-1613977257363-707ba9348227",
       alt: "Modern white villa with a swimming pool",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1758789667762-56175fe4601c",
+      alt: "Modern industrial building exterior with loading docks",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1554469384-e58fac16e23a",
+      alt: "Low angle photograph of a modern high-rise building",
     },
   ],
 };
@@ -517,7 +551,7 @@ export const jsonLd = {
     "Multidisciplinary contracting company specialising in Civil Construction, MEP and HVAC execution across Dubai, Sharjah, Ajman and Abu Dhabi since 2007.",
   foundingDate: "2007-03-15",
   telephone: "+971552313467",
-  email: "sales@royalvaluedxb.com",
+  email: "groupsales@royalvaluedxb.com",
   identifier: [
     { "@type": "PropertyValue", name: "Dubai DED Trade Licence", value: "592798" },
     { "@type": "PropertyValue", name: "Sharjah SEDD Trade Licence", value: "777338" },

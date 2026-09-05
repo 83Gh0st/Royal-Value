@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { clients, galleryImages } from "@/lib/content";
-import Reveal, { RevealGroup, RevealItem } from "./Reveal";
+import Reveal from "./Reveal";
 
 const mid = Math.ceil(clients.length / 2);
 const rowA = clients.slice(0, mid);
@@ -20,6 +20,8 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 }
 
 export default function Clients() {
+  const doubledImages = [...galleryImages.projects, ...galleryImages.projects];
+
   return (
     <section className="sec sec--paper" id="projects">
       <div className="wrap">
@@ -46,13 +48,17 @@ export default function Clients() {
       </Reveal>
 
       <div className="wrap">
-        <RevealGroup className="project-strip" stagger={0.06}>
-          {galleryImages.projects.map((img) => (
-            <RevealItem className="project-strip__item" key={img.src} amount={14}>
-              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 760px) 50vw, 25vw" style={{ objectFit: "cover" }} />
-            </RevealItem>
-          ))}
-        </RevealGroup>
+        <Reveal delay={0.15}>
+          <div className="img-carousel">
+            <div className="img-carousel__track">
+              {doubledImages.map((img, i) => (
+                <div className="img-carousel__item" key={`${img.src}-${i}`}>
+                  <Image src={img.src} alt={img.alt} fill sizes="18rem" style={{ objectFit: "cover" }} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

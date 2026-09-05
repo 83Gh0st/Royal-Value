@@ -1,5 +1,6 @@
-import { clients } from "@/lib/content";
-import Reveal from "./Reveal";
+import Image from "next/image";
+import { clients, galleryImages } from "@/lib/content";
+import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 const mid = Math.ceil(clients.length / 2);
 const rowA = clients.slice(0, mid);
@@ -29,7 +30,7 @@ export default function Clients() {
           <Reveal delay={0.08}>
             <p className="lede">
               Ninety-five projects between 2008 and 2025. Some of the
-              organisations behind them we can name here — others, including
+              organisations behind them we can name here. Others, including
               several distinguished private clients, we&rsquo;re trusted to
               keep confidential.
             </p>
@@ -43,6 +44,16 @@ export default function Clients() {
           <Row items={rowB} reverse />
         </div>
       </Reveal>
+
+      <div className="wrap">
+        <RevealGroup className="project-strip" stagger={0.06}>
+          {galleryImages.projects.map((img) => (
+            <RevealItem className="project-strip__item" key={img.src} amount={14}>
+              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 760px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+            </RevealItem>
+          ))}
+        </RevealGroup>
+      </div>
     </section>
   );
 }

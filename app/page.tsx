@@ -26,7 +26,7 @@ export default function Home() {
         <Services />
         <FeatureBand
           eyebrow="Execution, not design engineering"
-          heading="We build exactly what's approved — nothing assumed, nothing missing."
+          heading="We build exactly what's approved, nothing assumed, nothing missing."
           body="Civil, MEP and HVAC trades are coordinated on site so the drawing comes together the way it was intended on paper, with clashes resolved before they cost you time."
           image={{
             src: "https://images.unsplash.com/photo-1503387762-592deb58ef4e",
@@ -37,7 +37,7 @@ export default function Home() {
         <FeatureBand
           eyebrow="Our own trade"
           heading="MEP done by the people who commission it."
-          body="Callbacks on air-conditioning, power and plumbing come back to the same team that installed them — not a subcontractor we've lost touch with."
+          body="Callbacks on air-conditioning, power and plumbing come back to the same team that installed them, not a subcontractor we've lost touch with."
           image={{
             src: "https://images.unsplash.com/photo-1615774925655-a0e97fc85c14",
             alt: "Electrician in a hard hat and face shield testing an electrical panel",

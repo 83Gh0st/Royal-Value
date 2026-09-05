@@ -13,10 +13,10 @@ export type ContactPayload = {
  *
  * This currently validates the submission and logs it server-side so the
  * form works end to end out of the box. Before going live, wire this up to
- * a real email/CRM provider — for example:
+ * a real email/CRM provider, for example:
  *
- *   - Resend (https://resend.com) — a few lines with their Node SDK
- *   - Web3Forms (https://web3forms.com) — drop-in, no backend code needed
+ *   - Resend (https://resend.com): a few lines with their Node SDK
+ *   - Web3Forms (https://web3forms.com): drop-in, no backend code needed
  *   - Your own SMTP relay via nodemailer
  *
  * Forward `payload` to whichever you choose in place of the console.log below.

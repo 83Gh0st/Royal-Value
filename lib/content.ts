@@ -1,5 +1,5 @@
 // ─────────────────────────────────────────────────────────────────────────
-// RV Group Contracting — site content
+// RV Group Contracting: site content
 // Sourced from the company's 2025 profile, UAE trade licences, VAT
 // certificates and the client-supplied positioning brief. Edit here;
 // components read from this file.
@@ -24,7 +24,7 @@ export const site = {
   contactPersonTitle: "Technical Manager",
   founded: 2007,
   description:
-    "A multidisciplinary contracting company specialising in Civil Construction, MEP and HVAC works across Dubai, Sharjah, Ajman and Abu Dhabi. RV Group Contracting delivers end-to-end construction and engineering solutions for residential, commercial, industrial and institutional projects — trading since 2007.",
+    "A multidisciplinary contracting company specialising in Civil Construction, MEP and HVAC works across Dubai, Sharjah, Ajman and Abu Dhabi. RV Group Contracting delivers end-to-end construction and engineering solutions for residential, commercial, industrial and institutional projects, trading since 2007.",
 };
 
 export const nav = [
@@ -57,7 +57,7 @@ export const serviceGroups: ServiceGroup[] = [
     id: "civil",
     title: "Civil Construction",
     blurb:
-      "Complete building construction and execution for residential, commercial, industrial and institutional projects — from site mobilisation to final handover, built to approved drawings and specifications.",
+      "Complete building construction and execution for residential, commercial, industrial and institutional projects. From site mobilisation to final handover, work is built to approved drawings and specifications.",
     items: [
       "Civil and structural construction",
       "Foundations and substructure works",
@@ -79,7 +79,7 @@ export const serviceGroups: ServiceGroup[] = [
   },
   {
     id: "mep",
-    title: "MEP — Mechanical, Electrical & Plumbing",
+    title: "MEP (Mechanical, Electrical & Plumbing)",
     blurb:
       "Comprehensive MEP installation and execution, coordinated tightly with civil and architectural works to minimise site conflicts and delays.",
     items: [],
@@ -133,7 +133,7 @@ export const serviceGroups: ServiceGroup[] = [
     id: "hvac",
     title: "HVAC",
     blurb:
-      "Reliable climate control, professionally installed — for commercial, residential, industrial, hospitality, healthcare and institutional buildings, executed to client-approved designs and equipment selections.",
+      "Reliable climate control, professionally installed for commercial, residential, industrial, hospitality, healthcare and institutional buildings, and executed to client-approved designs and equipment selections.",
     items: [
       "VRF / VRV system installation",
       "Split and package AC systems",
@@ -155,7 +155,7 @@ export const serviceGroups: ServiceGroup[] = [
   },
 ];
 
-// ── Our Approach — a genuine 6-stage sequence ───────────────────────────
+// ── Our Approach: a genuine 6-stage sequence ───────────────────────────
 export const approach = [
   {
     title: "Understand",
@@ -167,7 +167,7 @@ export const approach = [
   },
   {
     title: "Execute",
-    body: "Our experienced site teams carry out construction, MEP and HVAC works in accordance with the approved project requirements — not a design of our own.",
+    body: "Our experienced site teams carry out construction, MEP and HVAC works in accordance with the approved project requirements, not a design of our own.",
   },
   {
     title: "Coordinate",
@@ -289,11 +289,11 @@ export const coverage = [
   {
     emirate: "Sharjah",
     tag: "SEDD Licence 777338 · valid to 2 Feb 2026",
-    body: "Royal Value Technical Contracting LLC, Industrial Area 15, Muwaileh — air-conditioning units, sixth-category contracting and sanitary works.",
+    body: "Royal Value Technical Contracting LLC, Industrial Area 15, Muwaileh, covering air-conditioning units, sixth-category contracting and sanitary works.",
   },
   {
     emirate: "Ajman",
-    tag: "Project basis — Ajman Municipality",
+    tag: "Project basis: Ajman Municipality",
     body: "Delivered HVAC and cold-storage works for Ajman Municipality at Ocean Fisheries; registered per project with the municipality.",
   },
   {
@@ -377,7 +377,7 @@ export const faqs = [
   },
   {
     q: "Do you design buildings, or execute someone else's design?",
-    a: "We focus on execution, not design engineering. We transform approved drawings, specifications and project requirements into a built, tested and commissioned result — coordinating civil, MEP and HVAC trades so the design comes together on site the way it was intended to on paper.",
+    a: "We focus on execution, not design engineering. We transform approved drawings, specifications and project requirements into a built, tested and commissioned result, coordinating civil, MEP and HVAC trades so the design comes together on site the way it was intended to on paper.",
   },
   {
     q: "Do you work as a main contractor, or only as an MEP subcontractor?",
@@ -385,7 +385,7 @@ export const faqs = [
   },
   {
     q: "How is a project priced?",
-    a: "Every quote follows a site visit and a review of the approved drawings and specification — civil, MEP and HVAC scopes are priced against what's actually being built, not a generic rate card. Get in touch with your drawings and we'll turn around a number quickly.",
+    a: "Every quote follows a site visit and a review of the approved drawings and specification: civil, MEP and HVAC scopes are priced against what's actually being built, not a generic rate card. Get in touch with your drawings and we'll turn around a number quickly.",
   },
   {
     q: "Do you handle the municipality approvals?",
@@ -393,16 +393,73 @@ export const faqs = [
   },
   {
     q: "Can you take over MEP or HVAC works another contractor left unfinished?",
-    a: "Regularly — several of our projects, including a DEWA power plant refurbishment and an RTA Metro AHU relocation, were exactly this kind of handover. We price it as a separate condition survey first, so you know what you're inheriting before committing to completion.",
+    a: "Regularly. Several of our projects, including a DEWA power plant refurbishment and an RTA Metro AHU relocation, were exactly this kind of handover. We price it as a separate condition survey first, so you know what you're inheriting before committing to completion.",
   },
   {
     q: "What guarantee do I get after handover?",
-    a: "A 12-month defects liability period covering workmanship, plus manufacturers' warranties on equipment — typically 12 to 60 months depending on the item. Because our own team installs what it commissions, callbacks come back to the people who built the system.",
+    a: "A 12-month defects liability period covering workmanship, plus manufacturers' warranties on equipment, typically 12 to 60 months depending on the item. Because our own team installs what it commissions, callbacks come back to the people who built the system.",
   },
 ];
 
+// ── Supplementary photography (stock, for layout, swap for real project
+// photos when available) ────────────────────────────────────────────────
+export const galleryImages = {
+  faqSide: {
+    src: "https://images.unsplash.com/photo-1598928506311-c55ded91a20c",
+    alt: "Living room interior with a marble fireplace and white sofas",
+  },
+  trustBg: {
+    src: "https://images.unsplash.com/photo-1587582423116-ec07293f0395",
+    alt: "Construction worker in a hard hat working on a building frame",
+  },
+  contactSide: {
+    src: "https://images.unsplash.com/photo-1554469384-e58fac16e23a",
+    alt: "Low angle photograph of a modern high-rise building",
+  },
+  industries: [
+    {
+      src: "https://images.unsplash.com/photo-1613977257363-707ba9348227",
+      alt: "Modern white villa with a swimming pool and outdoor lounge area",
+      label: "Residential",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1554469384-e58fac16e23a",
+      alt: "Low angle photograph of a modern high-rise building",
+      label: "Commercial",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1758193783649-13371d7fb8dd",
+      alt: "Modern hotel lobby with a sleek marble reception desk",
+      label: "Hospitality",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1758789667762-56175fe4601c",
+      alt: "Modern industrial building exterior with loading docks",
+      label: "Industrial",
+    },
+  ],
+  projects: [
+    {
+      src: "https://images.unsplash.com/photo-1599995903128-531fc7fb694b",
+      alt: "Construction cranes over a building site at low sun",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1615774925655-a0e97fc85c14",
+      alt: "Electrician in a hard hat testing an electrical panel",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1758193783649-13371d7fb8dd",
+      alt: "Modern hotel lobby with a sleek marble reception desk",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1613977257363-707ba9348227",
+      alt: "Modern white villa with a swimming pool",
+    },
+  ],
+};
+
 export const hq = {
-  label: "Head office — Sharjah",
+  label: "Head office, Sharjah",
   companyOnMap: "Royal Value Technical Contracting LLC",
   addressLine: "Industrial Area 15, Muwaileh, Sharjah",
   lat: 25.2917,
@@ -426,10 +483,10 @@ export const contactInfo = {
   dubai: {
     company: "Royal Value Electromechanical LLC",
     line1: "Al Mazoon Building, Damascus Street",
-    line2: "Al Qusais, Dubai — P.O. Box 94558",
+    line2: "Al Qusais, Dubai, P.O. Box 94558",
   },
   abudhabi: {
-    company: "Royal Value Electromechanical LLC — Abu Dhabi Branch",
+    company: "Royal Value Electromechanical LLC, Abu Dhabi Branch",
     line1: "Musaffah, Abu Dhabi",
   },
   hours: "Saturday – Thursday, 8:00 – 18:00 GST",
@@ -491,7 +548,7 @@ export const jsonLd = {
   ],
   makesOffer: [
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "Civil construction" } },
-    { "@type": "Offer", itemOffered: { "@type": "Service", name: "MEP — mechanical, electrical & plumbing" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "MEP (mechanical, electrical & plumbing)" } },
     { "@type": "Offer", itemOffered: { "@type": "Service", name: "HVAC installation & execution" } },
   ],
 };

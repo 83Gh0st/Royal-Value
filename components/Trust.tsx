@@ -1,14 +1,25 @@
 "use client";
 
+import Image from "next/image";
 import { Award, Layers, Lock, ShieldCheck, Truck } from "lucide-react";
-import { commitment, strengths, trust } from "@/lib/content";
+import { commitment, galleryImages, strengths, trust } from "@/lib/content";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 const ICONS = [Award, Lock, ShieldCheck, Layers, Truck];
 
 export default function Trust() {
   return (
-    <section className="sec sec--gun" id="trust">
+    <section className="sec sec--gun trust-bg" id="trust">
+      <div className="trust-bg__media">
+        <Image
+          src={galleryImages.trustBg.src}
+          alt={galleryImages.trustBg.alt}
+          fill
+          sizes="100vw"
+          style={{ objectFit: "cover" }}
+        />
+      </div>
+      <div className="trust-bg__scrim" />
       <div className="wrap">
         <div className="trust-top">
           <Reveal className="trust-top__head">

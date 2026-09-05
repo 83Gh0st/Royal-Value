@@ -35,17 +35,14 @@ export default async function Image() {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-          <span style={{ fontSize: 54, fontWeight: 700, lineHeight: 1.08, maxWidth: 980 }}>
-            Approved drawings.
-          </span>
-          <span style={{ fontSize: 54, fontWeight: 700, lineHeight: 1.08, color: "#EB1C25" }}>
-            Precisely executed.
-          </span>
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span style={{ fontSize: 50, fontWeight: 700, lineHeight: 1.1 }}>Built right.</span>
+          <span style={{ fontSize: 50, fontWeight: 700, lineHeight: 1.1 }}>Wired right.</span>
+          <span style={{ fontSize: 50, fontWeight: 700, lineHeight: 1.1, color: "#EB1C25" }}>Cooled right.</span>
         </div>
 
         <div style={{ display: "flex", fontSize: 20, opacity: 0.7 }}>
-          Civil Construction · MEP · HVAC — Dubai · Sharjah · Ajman · Abu Dhabi
+          Civil Construction · MEP · HVAC · Dubai · Sharjah · Ajman · Abu Dhabi
         </div>
       </div>
     ),

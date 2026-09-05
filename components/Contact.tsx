@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useState } from "react";
-import { contactInfo, hq, site } from "@/lib/content";
+import { contactInfo, galleryImages, hq, site } from "@/lib/content";
 import Reveal from "./Reveal";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -55,7 +56,7 @@ export default function Contact() {
           <Reveal delay={0.08}>
             <p className="lede">
               Have a construction, MEP or HVAC project? Talk to our team
-              about your requirements — we reply the same working day.
+              about your requirements. We reply the same working day.
             </p>
           </Reveal>
         </div>
@@ -65,7 +66,7 @@ export default function Contact() {
             <div>
               {status === "success" && (
                 <p className="form__ok" role="status">
-                  Thank you — your enquiry has been sent. We&rsquo;ll call you back today.
+                  Thank you. Your enquiry has been sent. We&rsquo;ll call you back today.
                 </p>
               )}
               {status === "error" && (
@@ -131,6 +132,16 @@ export default function Contact() {
 
           <Reveal dir="right" delay={0.1}>
             <div className="contact__side">
+              <div className="contact__photo">
+                <Image
+                  src={galleryImages.contactSide.src}
+                  alt={galleryImages.contactSide.alt}
+                  fill
+                  sizes="(max-width: 900px) 100vw, 25rem"
+                  style={{ objectFit: "cover" }}
+                />
+              </div>
+
               <dl className="info">
                 <dt>Call or WhatsApp</dt>
                 <dd><a href={site.phoneHref}>{contactInfo.callWhatsapp}</a></dd>
@@ -142,7 +153,7 @@ export default function Contact() {
                   {contactInfo.sharjah.line1}<br />
                   {contactInfo.sharjah.line2}
                 </dd>
-                <dt>Dubai — registered office</dt>
+                <dt>Dubai, registered office</dt>
                 <dd>
                   {contactInfo.dubai.line1}<br />
                   {contactInfo.dubai.line2}

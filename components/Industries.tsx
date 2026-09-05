@@ -1,4 +1,5 @@
-import { projectTypes } from "@/lib/content";
+import Image from "next/image";
+import { galleryImages, projectTypes } from "@/lib/content";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 export default function Industries() {
@@ -16,6 +17,15 @@ export default function Industries() {
             </p>
           </Reveal>
         </div>
+
+        <RevealGroup className="industries-grid" stagger={0.06}>
+          {galleryImages.industries.map((img) => (
+            <RevealItem className="industries-grid__item" key={img.label} amount={16}>
+              <Image src={img.src} alt={img.alt} fill sizes="(max-width: 860px) 50vw, 25vw" style={{ objectFit: "cover" }} />
+              <span>{img.label}</span>
+            </RevealItem>
+          ))}
+        </RevealGroup>
 
         <RevealGroup className="chips-wrap" as="ul" stagger={0.03}>
           {projectTypes.map((t) => (

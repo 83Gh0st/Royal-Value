@@ -41,16 +41,16 @@ export default function Hero() {
 
       <motion.div className="hero__in" style={{ y: contentY, opacity: contentOpacity }} initial="hidden" animate="show" variants={container}>
         <motion.p className="hero__kicker" variants={item}>
-          Civil Construction · MEP · HVAC — Dubai, Sharjah, Ajman &amp; Abu Dhabi
+          Civil Construction · MEP · HVAC · Dubai, Sharjah, Ajman &amp; Abu Dhabi
         </motion.p>
         <motion.h1 className="t-display" variants={item}>
-          Approved drawings.<br />Precisely executed.
+          Built right.<br />Wired right.<br />Cooled right.
         </motion.h1>
         <motion.p className="hero__lede" variants={item}>
-          A multidisciplinary contracting company delivering end-to-end civil,
-          MEP and HVAC execution for residential, commercial, industrial and
-          institutional projects — since 2007. We focus on execution, not
-          design engineering.
+          A multidisciplinary contracting company delivering end-to-end
+          civil, MEP and HVAC execution for residential, commercial,
+          industrial and institutional projects since 2007. We focus on
+          execution, not design engineering.
         </motion.p>
         <motion.div className="hero__cta" variants={item}>
           <motion.a

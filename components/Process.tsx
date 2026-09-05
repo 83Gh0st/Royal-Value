@@ -11,7 +11,7 @@ export default function Process() {
           </Reveal>
           <Reveal delay={0.08}>
             <p className="lede">
-              Six stages, on every project — whether we&rsquo;re the main
+              Six stages, on every project, whether we&rsquo;re the main
               contractor or delivering one trade to somebody else&rsquo;s
               programme.
             </p>

@@ -5,22 +5,22 @@ import { site, jsonLd } from "@/lib/content";
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "RV Group Contracting — Civil Construction, MEP & HVAC, UAE",
-    template: "%s — RV Group Contracting",
+    default: "RV Group Contracting | Civil Construction, MEP & HVAC, UAE",
+    template: "%s | RV Group Contracting",
   },
   description: site.description,
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     url: site.url,
-    title: "RV Group Contracting — Civil Construction, MEP & HVAC",
+    title: "RV Group Contracting | Civil Construction, MEP & HVAC",
     description:
       "Approved drawings, precisely executed. Civil, MEP and HVAC contracting across Dubai, Sharjah, Ajman and Abu Dhabi since 2007.",
     siteName: site.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "RV Group Contracting — Civil Construction, MEP & HVAC",
+    title: "RV Group Contracting | Civil Construction, MEP & HVAC",
     description:
       "Approved drawings, precisely executed. Civil, MEP and HVAC contracting across Dubai, Sharjah, Ajman and Abu Dhabi since 2007.",
   },

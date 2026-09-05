@@ -38,7 +38,7 @@ export default function ThemeToggle() {
     try {
       localStorage.setItem("rv-theme", next);
     } catch {
-      /* private-browsing / storage disabled — theme just won't persist */
+      /* private-browsing / storage disabled, theme just won't persist */
     }
   }
 

@@ -24,7 +24,7 @@ export default function WhyUs() {
           <Reveal delay={0.08}>
             <p className="lede">
               We believe successful construction is built on disciplined
-              execution, coordination, communication and quality control —
+              execution, coordination, communication and quality control,
               not promises.
             </p>
           </Reveal>

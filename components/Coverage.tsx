@@ -13,7 +13,7 @@ export default function Coverage() {
             <p className="lede">
               Three emirates on our own trade licences, and a fourth through
               the group&rsquo;s Abu Dhabi branch. A contractor quoting all
-              seven emirates is quoting at arm&rsquo;s length — we hold real
+              seven emirates is quoting at arm&rsquo;s length. We hold real
               licences and a real office in each of these four.
             </p>
           </Reveal>

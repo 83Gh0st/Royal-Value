@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { FormEvent, useState } from "react";
 import { contactInfo, galleryImages, hq, site } from "@/lib/content";
 import Reveal from "./Reveal";
@@ -47,7 +48,7 @@ export default function Contact() {
   }
 
   return (
-    <section className="sec sec--gun trust-bg" id="quote">
+    <section className="sec sec--gun trust-bg contact-bg" id="quote">
       <div className="trust-bg__media">
         <Image
           src={galleryImages.contactBg.src}
@@ -137,6 +138,25 @@ export default function Contact() {
                   marketing lists, no sharing with third parties.
                 </p>
               </form>
+
+              <div className="contact-trust">
+                <div>
+                  <b className="num">{site.founded}</b>
+                  <span>Trading since</span>
+                </div>
+                <div>
+                  <b className="num">48</b>
+                  <span>Technical staff</span>
+                </div>
+                <div>
+                  <b className="num">4</b>
+                  <span>Emirates covered</span>
+                </div>
+                <div>
+                  <b className="num">95+</b>
+                  <span>Projects delivered</span>
+                </div>
+              </div>
             </div>
           </Reveal>
 
@@ -144,38 +164,55 @@ export default function Contact() {
             <div className="contact-card">
               <div className="contact__side">
                 <dl className="info">
-                  <dt>Call or WhatsApp</dt>
-                  <dd><a href={site.phoneHref}>{contactInfo.callWhatsapp}</a></dd>
-                  <dt>Sales enquiries</dt>
-                  <dd><a href={site.salesEmailHref}>{contactInfo.email}</a></dd>
-                  <dt>{hq.label}</dt>
-                  <dd>
-                    {contactInfo.sharjah.company}<br />
-                    {contactInfo.sharjah.line1}<br />
-                    {contactInfo.sharjah.line2}
-                  </dd>
-                  <dt>Dubai, registered office</dt>
-                  <dd>
-                    {contactInfo.dubai.line1}<br />
-                    {contactInfo.dubai.line2}
-                  </dd>
-                  <dt>Abu Dhabi branch</dt>
-                  <dd>{contactInfo.abudhabi.line1}</dd>
-                  <dt>Hours</dt>
-                  <dd>{contactInfo.hours}</dd>
+                  <div className="info-row">
+                    <span className="info-row__icon"><Phone size={16} strokeWidth={1.75} /></span>
+                    <div>
+                      <dt>Call or WhatsApp</dt>
+                      <dd><a href={site.phoneHref}>{contactInfo.callWhatsapp}</a></dd>
+                    </div>
+                  </div>
+                  <div className="info-row">
+                    <span className="info-row__icon"><Mail size={16} strokeWidth={1.75} /></span>
+                    <div>
+                      <dt>Sales enquiries</dt>
+                      <dd><a href={site.salesEmailHref}>{contactInfo.email}</a></dd>
+                    </div>
+                  </div>
+                  <div className="info-row">
+                    <span className="info-row__icon"><MapPin size={16} strokeWidth={1.75} /></span>
+                    <div>
+                      <dt>{hq.label}</dt>
+                      <dd>
+                        {contactInfo.sharjah.company}<br />
+                        {contactInfo.sharjah.line1}, {contactInfo.sharjah.line2}
+                      </dd>
+                      <dd className="info-row__extra">
+                        Also at Al Qusais, Dubai and Musaffah, Abu Dhabi
+                      </dd>
+                    </div>
+                  </div>
+                  <div className="info-row">
+                    <span className="info-row__icon"><Clock size={16} strokeWidth={1.75} /></span>
+                    <div>
+                      <dt>Hours</dt>
+                      <dd>{contactInfo.hours}</dd>
+                    </div>
+                  </div>
                 </dl>
 
-                <div className="map-embed">
-                  <iframe
-                    src={hq.embedUrl}
-                    title={`Map to ${contactInfo.sharjah.company}`}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
-                  />
-                  <a className="map-embed__link" href={hq.shareUrl} target="_blank" rel="noopener noreferrer">
-                    Get directions ↗
-                  </a>
+                <div className="info-map">
+                  <div className="map-embed">
+                    <iframe
+                      src={hq.embedUrl}
+                      title={`Map to ${contactInfo.sharjah.company}`}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                    />
+                    <a className="map-embed__link" href={hq.shareUrl} target="_blank" rel="noopener noreferrer">
+                      Get directions ↗
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

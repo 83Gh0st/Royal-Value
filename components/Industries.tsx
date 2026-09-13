@@ -25,9 +25,11 @@ export default function Industries() {
         <div className="img-carousel">
           <div className="img-carousel__track">
             {doubledImages.map((img, i) => (
-              <div className="img-carousel__item" data-label key={`${img.src}-${i}`}>
-                <Image src={img.src} alt={img.alt} fill sizes="18rem" style={{ objectFit: "cover" }} />
-                <span>{img.label}</span>
+              <div className="img-carousel__item" key={`${img.src}-${i}`}>
+                <div className="img-carousel__frame">
+                  <Image src={img.src} alt={img.alt} fill sizes="21rem" style={{ objectFit: "cover" }} />
+                </div>
+                <p className="img-carousel__caption">{img.label}</p>
               </div>
             ))}
           </div>

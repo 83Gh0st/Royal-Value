@@ -485,56 +485,50 @@ h1, h2, h3, h4 {
 .img-carousel {
   overflow: hidden;
   margin-top: 3rem;
-  padding-block: 1.25rem;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  padding: 0.5rem 0 3rem;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
 }
 .img-carousel__track {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   width: max-content;
-  gap: clamp(1.25rem, 2.4vw, 2rem);
-  animation: carousel-left 58s linear infinite;
+  gap: clamp(1.5rem, 2.6vw, 2.5rem);
+  animation: carousel-left 64s linear infinite;
   will-change: transform;
 }
 .img-carousel:hover .img-carousel__track { animation-play-state: paused; }
 .img-carousel__item {
-  position: relative;
-  width: clamp(15rem, 23vw, 19.5rem);
-  aspect-ratio: 4/3;
   flex: none;
+  width: clamp(16.5rem, 25vw, 21rem);
+}
+.img-carousel__item:nth-child(even) { margin-top: 3rem; }
+.img-carousel__frame {
+  position: relative;
+  aspect-ratio: 4/3;
   overflow: hidden;
-  box-shadow: 0 1px 2px rgba(13,15,18,0.05), 0 22px 40px -26px rgba(13,15,18,0.4);
-  transition: transform 0.55s cubic-bezier(0.16,1,0.3,1), box-shadow 0.55s cubic-bezier(0.16,1,0.3,1);
+  box-shadow: 0 1px 2px rgba(13,15,18,0.06);
+  transition: box-shadow 0.5s cubic-bezier(0.16,1,0.3,1);
 }
-.img-carousel__item:nth-child(3n+1) {
-  width: clamp(18.5rem, 29vw, 25rem);
+.img-carousel__item:hover .img-carousel__frame {
+  box-shadow: 0 24px 44px -22px rgba(13,15,18,0.4);
 }
-.img-carousel__item:hover {
-  transform: translateY(-0.6rem);
-  box-shadow: 0 4px 8px rgba(13,15,18,0.08), 0 32px 56px -22px rgba(13,15,18,0.48);
-  z-index: 1;
-}
-.img-carousel__item img {
+.img-carousel__frame img {
   width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.5s ease;
+  transition: transform 0.9s cubic-bezier(0.16,1,0.3,1);
 }
-.img-carousel__item:hover img { transform: scale(1.06); filter: saturate(1.08) brightness(1.02); }
-.img-carousel__item span {
-  position: absolute; left: 1rem; bottom: 0.9rem; z-index: 1;
-  font-family: var(--f-display); font-size: 1rem; font-weight: 600; color: #fff;
-  display: flex; align-items: center; gap: 0.5rem;
+.img-carousel__item:hover .img-carousel__frame img { transform: scale(1.055); }
+.img-carousel__caption {
+  display: flex; align-items: baseline; gap: 0.6rem;
+  margin-top: 0.9rem;
+  font-family: var(--f-display); font-size: 1.05rem; font-weight: 600; color: var(--ink);
 }
-.img-carousel__item span::before { content: ""; width: 1.1rem; height: 2px; background: var(--copper); flex: none; }
-.img-carousel__item[data-label]::after {
-  content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(10,12,14,0) 42%, rgba(10,12,14,0.32) 72%, rgba(10,12,14,0.72) 100%);
-}
+.img-carousel__caption::before { content: ""; width: 1rem; height: 2px; background: var(--copper); flex: none; transform: translateY(-0.3rem); }
 @keyframes carousel-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .img-carousel__track { animation: none; } }
 @media (max-width: 640px) {
-  .img-carousel__item, .img-carousel__item:nth-child(3n+1) { width: clamp(12.5rem, 62vw, 16rem); }
+  .img-carousel__item { width: clamp(13rem, 66vw, 16.5rem); }
+  .img-carousel__item:nth-child(even) { margin-top: 2rem; }
 }
 .marquee {
   overflow: hidden;

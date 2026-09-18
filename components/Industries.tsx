@@ -1,10 +1,8 @@
-import Image from "next/image";
 import { galleryImages, projectTypes } from "@/lib/content";
+import ImageSlideshow from "./ImageSlideshow";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 export default function Industries() {
-  const doubledImages = [...galleryImages.industries, ...galleryImages.industries];
-
   return (
     <section className="sec sec--steel">
       <div className="wrap">
@@ -19,31 +17,20 @@ export default function Industries() {
             </p>
           </Reveal>
         </div>
-      </div>
 
-      <Reveal delay={0.12}>
-        <div className="img-carousel">
-          <div className="img-carousel__track">
-            {doubledImages.map((img, i) => (
-              <div className="img-carousel__item" key={`${img.src}-${i}`}>
-                <div className="img-carousel__frame">
-                  <Image src={img.src} alt={img.alt} fill sizes="21rem" style={{ objectFit: "cover" }} />
-                </div>
-                <p className="img-carousel__caption">{img.label}</p>
-              </div>
+        <Reveal delay={0.12}>
+          <ImageSlideshow images={galleryImages.industries} />
+        </Reveal>
+
+        <div style={{ marginTop: "2.5rem" }}>
+          <RevealGroup className="chips-wrap" as="ul" stagger={0.03}>
+            {projectTypes.map((t) => (
+              <RevealItem as="li" className="chip" key={t} amount={12}>
+                {t}
+              </RevealItem>
             ))}
-          </div>
+          </RevealGroup>
         </div>
-      </Reveal>
-
-      <div className="wrap" style={{ marginTop: "2.5rem" }}>
-        <RevealGroup className="chips-wrap" as="ul" stagger={0.03}>
-          {projectTypes.map((t) => (
-            <RevealItem as="li" className="chip" key={t} amount={12}>
-              {t}
-            </RevealItem>
-          ))}
-        </RevealGroup>
       </div>
     </section>
   );

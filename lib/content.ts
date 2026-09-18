@@ -465,30 +465,21 @@ export const galleryImages = {
     },
   ],
   projects: [
-    {
-      src: "https://images.unsplash.com/photo-1599995903128-531fc7fb694b",
-      alt: "Construction cranes over a building site at low sun",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1615774925655-a0e97fc85c14",
-      alt: "Electrician in a hard hat testing an electrical panel",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1758193783649-13371d7fb8dd",
-      alt: "Modern hotel lobby with a sleek marble reception desk",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1613977257363-707ba9348227",
-      alt: "Modern white villa with a swimming pool",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1758789667762-56175fe4601c",
-      alt: "Modern industrial building exterior with loading docks",
-    },
-    {
-      src: "https://images.unsplash.com/photo-1554469384-e58fac16e23a",
-      alt: "Low angle photograph of a modern high-rise building",
-    },
+    { src: "/assets/projects/project-01.jpg", alt: "Villa under construction, blockwork stage" },
+    { src: "/assets/projects/project-02.jpg", alt: "Modern villa exterior, structural stage" },
+    { src: "/assets/projects/project-03.jpg", alt: "Villa under construction with scaffolding" },
+    { src: "/assets/projects/project-04.jpg", alt: "Structural frame of a villa on a desert plot" },
+    { src: "/assets/projects/project-05.jpg", alt: "Completed modern villa, corner view" },
+    { src: "/assets/projects/project-06.jpg", alt: "Villa under construction on site" },
+    { src: "/assets/projects/project-07.jpg", alt: "Completed modern villa, dark and white facade" },
+    { src: "/assets/projects/project-08.jpg", alt: "Villa under construction with scaffolding" },
+    { src: "/assets/projects/project-09.jpg", alt: "Villa nearing completion, blockwork stage" },
+    { src: "/assets/projects/project-10.jpg", alt: "Row of villas under construction" },
+    { src: "/assets/projects/project-11.jpg", alt: "Completed villa entrance, glass facade" },
+    { src: "/assets/projects/project-12.jpg", alt: "Villa under construction on site" },
+    { src: "/assets/projects/project-13.jpg", alt: "Structural frame of a villa on a desert plot" },
+    { src: "/assets/projects/project-14.jpg", alt: "Villa under construction with materials on site" },
+    { src: "/assets/projects/project-15.jpg", alt: "Villa under construction, blockwork stage" },
   ],
 };
 

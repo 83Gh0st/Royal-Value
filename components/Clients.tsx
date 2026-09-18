@@ -1,5 +1,5 @@
-import Image from "next/image";
 import { clients, galleryImages } from "@/lib/content";
+import ImageSlideshow from "./ImageSlideshow";
 import Reveal from "./Reveal";
 
 const mid = Math.ceil(clients.length / 2);
@@ -20,8 +20,6 @@ function Row({ items, reverse }: { items: string[]; reverse?: boolean }) {
 }
 
 export default function Clients() {
-  const doubledImages = [...galleryImages.projects, ...galleryImages.projects];
-
   return (
     <section className="sec sec--paper" id="projects">
       <div className="wrap">
@@ -49,17 +47,7 @@ export default function Clients() {
 
       <div className="wrap">
         <Reveal delay={0.15}>
-          <div className="img-carousel">
-            <div className="img-carousel__track">
-              {doubledImages.map((img, i) => (
-                <div className="img-carousel__item" key={`${img.src}-${i}`}>
-                  <div className="img-carousel__frame">
-                    <Image src={img.src} alt={img.alt} fill sizes="21rem" style={{ objectFit: "cover" }} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <ImageSlideshow images={galleryImages.projects} />
         </Reveal>
       </div>
     </section>

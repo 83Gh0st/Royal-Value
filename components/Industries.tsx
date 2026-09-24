@@ -1,5 +1,5 @@
 import { galleryImages, projectTypes } from "@/lib/content";
-import ImageSlideshow from "./ImageSlideshow";
+import ImageCarousel from "./ImageCarousel";
 import Reveal, { RevealGroup, RevealItem } from "./Reveal";
 
 export default function Industries() {
@@ -19,7 +19,7 @@ export default function Industries() {
         </div>
 
         <Reveal delay={0.12}>
-          <ImageSlideshow images={galleryImages.industries} />
+          <ImageCarousel images={galleryImages.industries} />
         </Reveal>
 
         <div style={{ marginTop: "2.5rem" }}>

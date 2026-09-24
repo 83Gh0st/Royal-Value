@@ -1,5 +1,5 @@
 import { clients, galleryImages } from "@/lib/content";
-import ImageSlideshow from "./ImageSlideshow";
+import ImageCarousel from "./ImageCarousel";
 import Reveal from "./Reveal";
 
 const mid = Math.ceil(clients.length / 2);
@@ -47,7 +47,7 @@ export default function Clients() {
 
       <div className="wrap">
         <Reveal delay={0.15}>
-          <ImageSlideshow images={galleryImages.projects} />
+          <ImageCarousel images={galleryImages.projects} />
         </Reveal>
       </div>
     </section>

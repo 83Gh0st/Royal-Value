@@ -48,8 +48,14 @@ export default function Header() {
       <a href="#main" className="skip">Skip to content</a>
       <div className="hdr__in" style={{ position: "relative" }}>
         <Link href="#top" className="logo">
-          <Image src="/logo-mark.svg" alt="" width={45} height={36} className="logo__mark" priority />
-          <span className="logo__txt">
+<Image
+  src="/logo-mark.svg"
+  alt=""
+  width={65}
+  height={62}
+  className="logo__mark"
+  priority
+/>          <span className="logo__txt">
             <b>{site.name}</b>
             <span>{site.parent}</span>
           </span>

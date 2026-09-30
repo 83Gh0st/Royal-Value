@@ -162,11 +162,37 @@ h1, h2, h3, h4 {
   align-items: center;
   gap: 1.25rem;
 }
-.logo { display: flex; align-items: center; gap: 0.65rem; text-decoration: none; flex: none; color: var(--on-gun); }
-.logo__mark { width: 2.75rem; height: auto; flex: none; }
-.logo__txt { display: flex; flex-direction: column; line-height: 1.12; }
-.logo__txt b { font-family: var(--f-display); font-size: 1rem; font-weight: 700; }
-.logo__txt span { font-size: 0.68rem; color: color-mix(in srgb, var(--on-gun) 55%, transparent); }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex: none;
+  color: var(--on-gun);
+}
+
+.logo__mark {
+  width: 4rem;
+  height: auto;
+  flex: none;
+}
+
+.logo__txt {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.12;
+}
+
+.logo__txt b {
+  font-family: var(--f-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.logo__txt span {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, var(--on-gun) 55%, transparent);
+}
 
 .nav { margin-left: auto; display: flex; align-items: center; gap: 1.7rem; }
 .nav a {
